@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álvaro García — Builder, Writer, AI Early Adopter</title>
+    <meta name="description" content="Álvaro García: Product builder, AI trainer (2,000+ employees), and technical writer. 12+ years turning complexity into clarity across tech, gaming, and publishing.">
+    <meta name="keywords" content="technical writer, AI trainer, product builder, language learning apps, software documentation, blockchain, instructional design, localization, Hanzi Samurai">
+    <meta name="author" content="Álvaro García">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Álvaro García — Builder, Writer, AI Early Adopter">
+    <meta property="og:description" content="I build language-learning products, write docs for software teams, and train organizations on AI. Let's talk.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alvaroga.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+/* ============================================
+   CSS VARIABLES & RESET
+   ============================================ */
+:root {
+    --bg-primary: #0a0a0b;
+    --bg-secondary: #111113;
+    --bg-card: #18181b;
+    --bg-card-hover: #1f1f23;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --accent-glow: rgba(99, 102, 241, 0.15);
+    --accent-glow-strong: rgba(99, 102, 241, 0.3);
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --cyan: #06b6d4;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
+
+/* ============================================
+   ANIMATED BACKGROUND GRID
+   ============================================ */
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+/* Floating orbs */
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb--1 {
+    width: 600px; height: 600px;
+    background: var(--accent);
+    top: -200px; left: -200px;
+    animation-delay: 0s;
+}
+
+.orb--2 {
+    width: 500px; height: 500px;
+    background: var(--cyan);
+    bottom: -150px; right: -150px;
+    animation-delay: -7s;
+    animation-duration: 25s;
+}
+
+.orb--3 {
+    width: 400px; height: 400px;
+    background: var(--rose);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -14s;
+    animation-duration: 30s;
+    opacity: 0.15;
+}
+
+@keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -40px) scale(1.05); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(40px, 30px) scale(1.02); }
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 7rem 0;
+    position: relative;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 11, 0.6);
+    border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+    padding: 0.6rem 0;
+    background: rgba(10, 10, 11, 0.9);
+    border-bottom-color: var(--border);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header__logo .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+.nav { display: none; }
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+    border-radius: 1px;
+}
+
+.nav a:hover { color: var(--text-primary); }
+.nav a:hover::after { width: 100%; }
+
+.header__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.header__cta:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px var(--accent-glow-strong);
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Mobile nav */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(10, 10, 11, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.mobile-nav a:hover { color: var(--text-primary); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 0 6rem;
+    position: relative;
+}
+
+.hero__avatar {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 40px var(--accent-glow), 0 0 80px rgba(99,102,241,0.1);
+    animation: heroReveal 1s ease-out 0s both;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.hero__avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--accent-glow), 0 0 100px rgba(99,102,241,0.2);
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--accent-glow);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-light);
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero__badge .pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: heroReveal 1s ease-out 0.2s both;
+}
+
+.hero h1 .gradient-text {
+    background: linear-gradient(135deg, var(--accent-light), var(--cyan), var(--accent-light));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes heroReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero__sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    animation: heroReveal 1s ease-out 0.5s both;
+}
+
+.hero__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: heroReveal 1s ease-out 0.7s both;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn--primary {
+    background: var(--accent);
+    color: white;
+}
+
+.btn--primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px var(--accent-glow-strong);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-hover);
+}
+
+.btn--secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.hero__scroll .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ============================================
+   MARQUEE (COMPANIES)
+   ============================================ */
+.marquee-section {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+
+.marquee-label {
+    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.marquee-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .marquee-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem 2.5rem;
+    }
+    .marquee-logos img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .marquee-logos img {
+        height: 40px;
+    }
+}
+
+.marquee-logos img {
+    height: 90px;
+    width: auto;
+    opacity: 0.85;
+    transition: all 0.4s;
+}
+
+.marquee-logos img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-light);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.section-tag::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.section-header { margin-bottom: 4rem; }
+
+.section-header--center {
+    text-align: center;
+}
+
+.section-header--center .section-subtitle {
+    margin: 0 auto;
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about { background: var(--bg-primary); }
+
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about__text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.about__text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.about__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: all 0.4s;
+}
+
+.stat-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.stat-card__number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-light);
+    font-family: var(--font-mono);
+    line-height: 1.2;
+}
+
+.stat-card__label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+
+.about__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    padding: 1.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.highlight-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateX(6px);
+}
+
+.highlight-card:hover::before { opacity: 1; }
+
+.highlight-card__icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.highlight-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.highlight-card__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   PRODUCTS / BUILDS
+   ============================================ */
+.products { background: var(--bg-secondary); }
+
+.products__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.product-card {
+    padding: 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.product-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px var(--accent-glow);
+}
+
+.product-card:hover::after { opacity: 1; }
+
+.product-card > * { position: relative; z-index: 1; }
+
+.product-card__emoji {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.product-card__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.product-card__desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.product-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent-light);
+    font-family: var(--font-mono);
+}
+
+.product-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: gap 0.3s;
+}
+
+.product-card__link:hover { gap: 0.8rem; }
+
+.product-card__link .arrow { transition: transform 0.3s; }
+.product-card__link:hover .arrow { transform: translateX(3px); }
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services { background: var(--bg-primary); }
+
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.service-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.4s;
+    cursor: default;
+}
+
+.service-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+}
+
+.service-card__icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.service-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.service-card__desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================
+   PORTFOLIO
+   ============================================ */
+.portfolio-section { background: var(--bg-secondary); }
+
+.portfolio-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+
+.portfolio-tab {
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.portfolio-tab:hover,
+.portfolio-tab.active {
+    border-color: var(--accent);
+    color: var(--accent-light);
+    background: var(--accent-glow);
+}
+
+.portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+.portfolio-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.portfolio-card__img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.5s;
+}
+
+.portfolio-card:hover .portfolio-card__img {
+    transform: scale(1.05);
+}
+
+.portfolio-card__img-wrap {
+    overflow: hidden;
+}
+
+.portfolio-card__body {
+    padding: 1.5rem;
+}
+
+.portfolio-card__category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-light);
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-card__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.portfolio-card__desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials-section {
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.4s;
+}
+
+.testimonial-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+}
+
+.testimonial-card__text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.testimonial-card__text strong {
+    color: var(--text-primary);
+}
+
+.testimonial-card__author {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card__name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.testimonial-card__role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   LANGUAGES
+   ============================================ */
+.languages-section { background: var(--bg-secondary); }
+
+.langs__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.lang-card {
+    padding: 1.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.4s;
+}
+
+.lang-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.lang-card__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.lang-card__level {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--accent), var(--cyan));
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+}
+
+.progress-bar__fill.animate { width: var(--w); }
+
+/* ============================================
+   PERSONALITY TRAITS
+   ============================================ */
+.traits-section { background: var(--bg-primary); }
+
+.traits__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.trait-card {
+    padding: 1.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.4s;
+}
+
+.trait-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.trait-card__icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.trait-card__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.trait-card__desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta-section {
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-secondary);
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--accent-glow-strong) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-section > * { position: relative; z-index: 1; }
+
+.cta-section .section-title {
+    margin-bottom: 1.5rem;
+}
+
+.cta-section .section-subtitle {
+    margin: 0 auto 2.5rem;
+}
+
+.cta-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.cta-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.cta-detail .icon {
+    color: var(--green);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-primary);
+}
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer__copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer__links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer__links a {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.footer__links a:hover { color: var(--text-primary); }
+
+/* ============================================
+   SCROLL ANIMATIONS (intersection observer)
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Stagger children */
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(7) { transition-delay: 0.35s; }
+.stagger-children.visible > *:nth-child(8) { transition-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(9) { transition-delay: 0.45s; }
+
+.stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   MAGNETIC CURSOR EFFECT (desktop)
+   ============================================ */
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translate(-50%, -50%);
+}
+
+body:hover .cursor-glow { opacity: 1; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (min-width: 1024px) {
+    .hamburger { display: none; }
+    .nav { display: block; }
+}
+
+@media (max-width: 1024px) {
+    .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services__grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+    .traits__grid { grid-template-columns: repeat(2, 1fr); }
+    .products__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    section { padding: 5rem 0; }
+    .services__grid { grid-template-columns: 1fr; }
+    .testimonials__grid { grid-template-columns: 1fr; }
+    .langs__grid { grid-template-columns: repeat(2, 1fr); }
+    .traits__grid { grid-template-columns: repeat(2, 1fr); }
+    .about__stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 7rem 0 5rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero__sub { font-size: 0.95rem; }
+    .cta-details { gap: 1rem 1.5rem; }
+    .cta-detail { font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    .langs__grid { grid-template-columns: 1fr; }
+    .traits__grid { grid-template-columns: 1fr; }
+    .about__stats { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .hero__sub { font-size: 0.9rem; }
+    .cta-details { flex-direction: column; align-items: center; gap: 0.75rem; }
+}
+
+/* ============================================
+   LANGUAGE SWITCHER
+   ============================================ */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px;
+    margin-right: 0.75rem;
+}
+
+.lang-switch__btn {
+    padding: 0.3rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transition: all 0.3s;
+    font-family: var(--font-sans);
+    letter-spacing: 0.02em;
+}
+
+.lang-switch__btn:hover {
+    color: var(--text-primary);
+}
+
+.lang-switch__btn.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 10px var(--accent-glow);
+}
+
+@media (max-width: 1023px) {
+    .header .lang-switch {
+        display: none;
+    }
+    .header__cta {
+        display: none;
+    }
+    .mobile-nav .lang-switch {
+        display: flex;
+        margin: 0 auto 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- Ambient background -->
+<div class="bg-grid"></div>
+<div class="orb orb--1"></div>
+<div class="orb orb--2"></div>
+<div class="orb orb--3"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="wrap">
+
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<header class="header" id="header">
+    <div class="container header__inner">
+        <a href="#" class="header__logo">
+            <span class="dot"></span>
+            Álvaro García
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#products" data-i18n="nav_products">Products</a></li>
+                <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+                <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switch" id="langSwitch">
+            <button class="lang-switch__btn active" data-lang="en">EN</button>
+            <button class="lang-switch__btn" data-lang="es">ES</button>
+            <button class="lang-switch__btn" data-lang="de">DE</button>
+            <button class="lang-switch__btn" data-lang="zh">ZH</button>
+        </div>
+        <a href="/cdn-cgi/l/email-protection#f199949d9d9eb1909d8790839e9690df929e9c" class="header__cta" data-i18n="header_cta">Let's talk &rarr;</a>
+        <div class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav">
+    <div class="lang-switch" id="langSwitchMobile">
+        <button class="lang-switch__btn active" data-lang="en">EN</button>
+        <button class="lang-switch__btn" data-lang="es">ES</button>
+        <button class="lang-switch__btn" data-lang="de">DE</button>
+        <button class="lang-switch__btn" data-lang="zh">ZH</button>
+    </div>
+    <a href="#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
+    <a href="#products" onclick="closeMobileNav()" data-i18n="nav_products">Products</a>
+    <a href="#services" onclick="closeMobileNav()" data-i18n="nav_services">Services</a>
+    <a href="#portfolio" onclick="closeMobileNav()" data-i18n="nav_portfolio">Portfolio</a>
+    <a href="#testimonials" onclick="closeMobileNav()" data-i18n="nav_testimonials">Testimonials</a>
+    <a href="/cdn-cgi/l/email-protection#8ae2efe6e6e5caebe6fcebf8e5edeba4e9e5e7" class="btn btn--primary" onclick="closeMobileNav()" data-i18n="nav_cta">Let's talk</a>
+</div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+    <div class="container">
+        <img src="alvaro.jpg" alt="Álvaro García" class="hero__avatar">
+        <div class="hero__badge">
+            <span class="pulse"></span>
+            <span data-i18n="hero_badge">Available for projects &mdash; remote worldwide</span>
+        </div>
+        <h1 data-i18n="hero_h1">I build things<br>that <span class="gradient-text">teach people.</span></h1>
+        <p class="hero__sub" data-i18n="hero_sub">Product builder. AI trainer to 2,000+ employees. Technical writer. 12+ years turning complex tech into products people love and teams that actually get AI.</p>
+        <div class="hero__buttons">
+            <a href="/cdn-cgi/l/email-protection#6d05080101022d0c011b0c1f020a0c430e0200" class="btn btn--primary" data-i18n="hero_cta">Start a conversation &rarr;</a>
+            <a href="https://www.linkedin.com/in/alvarogarciabarbon" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn</a>
+        </div>
+    </div>
+    <div class="hero__scroll">
+        <span data-i18n="hero_scroll">scroll</span>
+        <div class="arrow"></div>
+    </div>
+</section>
+
+<!-- ============================================
+     COMPANY MARQUEE
+     ============================================ -->
+<div class="marquee-section">
+    <div class="container">
+        <p class="marquee-label" data-i18n="marquee_label">Trusted by teams at</p>
+        <div class="marquee-logos">
+            <img src="frontiers.png" alt="Frontiers Media">
+            <img src="amazon-logo.png" alt="Amazon">
+            <img src="nintendo.png" alt="Nintendo of Europe">
+            <img src="metrohm.jpg" alt="Metrohm DropSens">
+            <img src="utrax.png" alt="U-TRAX">
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     ABOUT
+     ============================================ -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about__grid">
+            <div class="about__text reveal">
+                <div class="section-tag" data-i18n="nav_about">About</div>
+                <h2 class="section-title" data-i18n="about_title">Linguist turned builder.<br>Writer turned maker.</h2>
+                <p data-i18n="about_p1">I went from studying 15 languages to working at <strong>Nintendo</strong> at 23. Since then I've documented APIs at <strong>Amazon</strong>, wrote UX copy for scientific instruments at <strong>Metrohm</strong>, and spent three years at <strong>Frontiers</strong> &mdash; where the role evolved far beyond documentation.</p>
+                <p data-i18n="about_p2">At Frontiers, I <strong>trained over 2,000 employees on AI</strong>, built automated workflows, launched a company-wide <strong>prompting community</strong> with weekly AI news and discussions, and drove initiatives that reshaped how the organization adopted generative AI. The last two of my three years there were dedicated to <strong>AI education and change management</strong> at scale.</p>
+                <p data-i18n="about_p3">I was using GPT-3 before ChatGPT existed. Today I hold <strong>Google Cloud Gen AI certifications</strong>, build AI-integrated products, and ship language-learning apps powered by <strong>spaced repetition and the Claude API</strong>. I don't just write about technology &mdash; I build with it.</p>
+                <div class="about__stats stagger-children">
+                    <div class="stat-card">
+                        <div class="stat-card__number">2,000+</div>
+                        <div class="stat-card__label" data-i18n="stat1_label">Employees trained on AI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">6</div>
+                        <div class="stat-card__label" data-i18n="stat2_label">Languages spoken</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">100k+</div>
+                        <div class="stat-card__label" data-i18n="stat3_label">Newsletter subscribers (prev.)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__number">17k+</div>
+                        <div class="stat-card__label" data-i18n="stat4_label">LinkedIn followers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about__highlights reveal reveal-delay-2 stagger-children">
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">&#x1F9E0;</div>
+                    <div class="highlight-card__title" data-i18n="hl1_title">AI Leader &amp; Early Adopter</div>
+                    <div class="highlight-card__desc" data-i18n="hl1_desc">Trained 2,000+ employees on AI at Frontiers. Built automated workflows, launched a prompting community, and led AI adoption initiatives. Google Cloud Gen AI certified. Using LLMs since GPT-3.</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">&#x1F6E0;&#xFE0F;</div>
+                    <div class="highlight-card__title" data-i18n="hl2_title">Product Builder</div>
+                    <div class="highlight-card__desc" data-i18n="hl2_desc">From zero to shipped: React apps, Firebase backends, PWAs on Google Play. I code, design, and deploy &mdash; end to end.</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">&#x1F4DD;</div>
+                    <div class="highlight-card__title" data-i18n="hl3_title">Technical Writer</div>
+                    <div class="highlight-card__desc" data-i18n="hl3_desc">Confluence architectures, API docs, UX copy, release notes. I've written for developers, product managers, and end users at scale.</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">&#x1F3AF;</div>
+                    <div class="highlight-card__title" data-i18n="hl4_title">Trainer &amp; Speaker</div>
+                    <div class="highlight-card__desc" data-i18n="hl4_desc">Presented to audiences of 700+, pitched initiatives to C-level executives, and coached leaders on presentation and delivery. I make complex ideas feel intuitive.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PRODUCTS
+     ============================================ -->
+<section class="products" id="products">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="nav_products">Products</div>
+            <h2 class="section-title" data-i18n="products_title">Products &amp; Prototypes</h2>
+            <p class="section-subtitle" data-i18n="products_sub">Where linguistics, data modeling, and software meet. I don't just document tech &mdash; I ship it.</p>
+        </div>
+        <div class="products__grid">
+            <div class="product-card reveal">
+                <div class="product-card__emoji">&#x2694;&#xFE0F;</div>
+                <div class="product-card__title" data-i18n="hanzi_title">Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;</div>
+                <p class="product-card__desc" data-i18n="hanzi_desc">A full-stack Chinese learning game covering HSK 1&ndash;3 with 2,449 vocabulary entries. Four game modes (Journey, Visions, Forge, Library) with SM-2 spaced repetition tracking recall, recognition, and listening independently. 10+ drill types, native audio, grammar in context, and a samurai combat mechanic that makes studying addictive.</p>
+                <div class="product-card__tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Claude API</span>
+                    <span class="tag">PWA</span>
+                    <span class="tag">Google Play</span>
+                    <span class="tag">SM-2 SRS</span>
+                </div>
+                <a href="https://chinese.alvaroga.com" target="_blank" rel="noopener" class="product-card__link">
+                    <span data-i18n="hanzi_web">Play on web</span> <span class="arrow">&rarr;</span>
+                </a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <span class="product-card__link" style="opacity:0.5;cursor:default" data-i18n="hanzi_android">Soon on Android</span>
+            </div>
+            <div class="product-card reveal reveal-delay-2">
+                <div class="product-card__emoji">📖</div>
+                <div class="product-card__title" data-i18n="german_title">German Learning Prototype</div>
+                <p class="product-card__desc" data-i18n="german_desc">An experimental platform for learning German through natural, intuitive methods. Early-stage prototype exploring how spaced repetition and contextual drilling can be applied to German grammar &mdash; one of the hardest parts for any learner. Same philosophy: every word from every angle.</p>
+                <div class="product-card__tags">
+                    <span class="tag">Prototype</span>
+                    <span class="tag">Natural method</span>
+                    <span class="tag">Grammar drills</span>
+                </div>
+                <a href="https://german.alvaroga.com" target="_blank" rel="noopener" class="product-card__link">
+                    <span data-i18n="german_link">Explore prototype</span> <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="nav_services">Services</div>
+            <h2 class="section-title" data-i18n="services_title">What I Can Do For You</h2>
+            <p class="section-subtitle" data-i18n="services_sub">From documentation to AI workshops &mdash; I help teams communicate clearly and ship faster.</p>
+        </div>
+        <div class="services__grid stagger-children">
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F916;</div>
+                <div class="service-card__title" data-i18n="svc1_t">AI Training &amp; Workshops</div>
+                <p class="service-card__desc" data-i18n="svc1_d">Trained 2,000+ people on prompt engineering, LLM workflows, and AI agents. I make your entire org AI-literate.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F3D7;&#xFE0F;</div>
+                <div class="service-card__title" data-i18n="svc2_t">Product Creation &amp; Prototyping</div>
+                <p class="service-card__desc" data-i18n="svc2_d">From concept to shipped product. React, Firebase, APIs, PWAs on Google Play. I design, build, and deploy end to end &mdash; fast.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F3A4;</div>
+                <div class="service-card__title" data-i18n="svc3_t">Presentation Coaching</div>
+                <p class="service-card__desc" data-i18n="svc3_d">Storytelling frameworks, slide design, and delivery techniques. Make your next talk unforgettable.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F3AF;</div>
+                <div class="service-card__title" data-i18n="svc4_t">Learning Design</div>
+                <p class="service-card__desc" data-i18n="svc4_d">Courses, onboarding flows, and training programs that stick. Built around how adults actually learn.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F4DA;</div>
+                <div class="service-card__title" data-i18n="svc5_t">Technical Writing</div>
+                <p class="service-card__desc" data-i18n="svc5_d">API docs, user guides, release notes, information architecture. Clear writing for complex systems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x2699;&#xFE0F;</div>
+                <div class="service-card__title" data-i18n="svc6_t">Process &amp; Automation</div>
+                <p class="service-card__desc" data-i18n="svc6_d">Automated workflows, Confluence structures, communication systems, tool adoption. Cut the noise, boost the signal.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x270D;&#xFE0F;</div>
+                <div class="service-card__title" data-i18n="svc7_t">UX Writing &amp; Copywriting</div>
+                <p class="service-card__desc" data-i18n="svc7_d">Microcopy, interface text, email campaigns, and landing pages. Words that convert and delight.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F30D;</div>
+                <div class="service-card__title" data-i18n="svc8_t">Localization &amp; Translation</div>
+                <p class="service-card__desc" data-i18n="svc8_d">Cultural adaptation across ES/EN/DE. Nintendo-trained linguist. Games, software, and marketing.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#x1F50D;</div>
+                <div class="service-card__title" data-i18n="svc9_t">Proofreading &amp; QA</div>
+                <p class="service-card__desc" data-i18n="svc9_d">Linguistic QA, functional testing, accuracy review. Nothing ships with errors on my watch.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PORTFOLIO
+     ============================================ -->
+<section class="portfolio-section" id="portfolio">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="nav_portfolio">Portfolio</div>
+            <h2 class="section-title" data-i18n="portfolio_title">Selected Work</h2>
+            <p class="section-subtitle" data-i18n="portfolio_sub">A cross-section of 12 years in tech, gaming, publishing, and education.</p>
+        </div>
+        <div class="portfolio__grid stagger-children">
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="confluence.jpg" alt="Confluence Information Architecture" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf1_cat">Technical Writing</div>
+                    <div class="portfolio-card__title">Confluence Constellation</div>
+                    <p class="portfolio-card__desc" data-i18n="pf1_d">Scalable information architecture for Frontiers' go-to documentation tool.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="teams.png" alt="Microsoft Teams Philosophy" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf2_cat">Technical Writing</div>
+                    <div class="portfolio-card__title">Microsoft Teams Philosophy</div>
+                    <p class="portfolio-card__desc" data-i18n="pf2_d">Communication culture revamp at Frontiers through structured Teams adoption.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="gpt.jpg" alt="FrontonGPT Training" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf3_cat">AI Training</div>
+                    <div class="portfolio-card__title">FrontonGPT &amp; AI Adoption</div>
+                    <p class="portfolio-card__desc" data-i18n="pf3_d">AI training program for 2,000+ employees. Prompting community, weekly AI news, automated workflows, and change management.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="zelda.jpg" alt="The Legend of Zelda" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf4_cat">Localization</div>
+                    <div class="portfolio-card__title">The Legend of Zelda Series</div>
+                    <p class="portfolio-card__desc" data-i18n="pf4_d">Localized four titles: A Link Between Worlds, Majora's Mask 3D, Wind Waker HD, and Hyrule Warriors.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="amazon.png" alt="Amazon Seller Central" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf5_cat">UX Writing</div>
+                    <div class="portfolio-card__title">Amazon Seller Central</div>
+                    <p class="portfolio-card__desc" data-i18n="pf5_d">User guides, help docs, and UX element translation for Amazon's seller platform.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="programa-fluidez.PNG" alt="Programa Fluidez" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf6_cat">Product / Training</div>
+                    <div class="portfolio-card__title">Programa Fluidez</div>
+                    <p class="portfolio-card__desc" data-i18n="pf6_d">English learning system for Spanish speakers &mdash; grammar, vocabulary, and pronunciation.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="sales.png" alt="Email Campaigns" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf7_cat">Copywriting</div>
+                    <div class="portfolio-card__title">Email Campaigns</div>
+                    <p class="portfolio-card__desc" data-i18n="pf7_d">Copy for own language-learning products resulting in thousands of sales.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="omnis.jpg" alt="Metrohm Omnis" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf8_cat">UX Writing</div>
+                    <div class="portfolio-card__title">Metrohm Omnis</div>
+                    <p class="portfolio-card__desc" data-i18n="pf8_d">UX texts and release notes in German with focus on terminology accuracy.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-card__img-wrap">
+                    <img src="dead-island.jpg" alt="Dead Island" class="portfolio-card__img">
+                </div>
+                <div class="portfolio-card__body">
+                    <div class="portfolio-card__category" data-i18n="pf9_cat">QA Testing</div>
+                    <div class="portfolio-card__title">Dead Island</div>
+                    <p class="portfolio-card__desc" data-i18n="pf9_d">Linguistic and functional testing for the award-winning action RPG (PC & consoles).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials-section" id="testimonials">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="nav_testimonials">Testimonials</div>
+            <h2 class="section-title" data-i18n="testimonials_title">What People Say</h2>
+        </div>
+        <div class="testimonials__grid stagger-children">
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"What sets Álvaro apart is his <strong>constant pursuit of excellence</strong>. He always pushes for the best possible solution, often going above and beyond what is expected."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Taylor Harvey</span>
+                    <span class="testimonial-card__role">Technical Writing Team Lead, Frontiers</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"He's a great professional, detail-oriented who always provides the best results. Worked with two development teams at a time <strong>without showing any stress</strong>."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Silvia Palicio</span>
+                    <span class="testimonial-card__role">Product Owner, Metrohm DropSens</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"Not only an excellent linguist but <strong>a tech-savvy, multi-talented individual</strong> with a great eye for detail, bias for action and excellent attitude towards team work."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Marta Callava</span>
+                    <span class="testimonial-card__role">Technical Writer, Amazon</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"Álvaro was extremely <strong>open to new ideas and adapting</strong> the hard work already put in to iterate on the final content."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Ben Law</span>
+                    <span class="testimonial-card__role">Learning &amp; Development, Frontiers</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"<strong>Profound knowledge of tools and capability to maintain structure</strong> during intense meetings are critical aspects that he should absolutely maintain."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Ciro di Marzo</span>
+                    <span class="testimonial-card__role">Technical Product Manager, Frontiers</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"His <strong>ability and motivation to adapt quickly to any new situation</strong> ensured he immediately excelled in the team."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Jelle de Vaal</span>
+                    <span class="testimonial-card__role">Project Manager, U-TRAX</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"Demonstrated <strong>a proactive and solution-oriented mindset</strong>, contributing greatly to our organization and efficiency."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Stefano Giannone</span>
+                    <span class="testimonial-card__role">Group Engineering Manager, Frontiers</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"He was fast, creative and asked relevant questions all the time. <strong>We were a great team</strong> and I am sure you will like having Álvaro in yours."</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Pablo Muñoz</span>
+                    <span class="testimonial-card__role">Freelance Translator</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-card__text">"Always willing to help, with a very positive attitude, he always showed commitment and <strong>got things done with special attention to detail.</strong>"</p>
+                <div class="testimonial-card__author">
+                    <span class="testimonial-card__name">Raquel Encinar</span>
+                    <span class="testimonial-card__role">Senior QA Lead, Frontiers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     LANGUAGES
+     ============================================ -->
+<section class="languages-section" id="languages">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="lang_tag">Languages</div>
+            <h2 class="section-title" data-i18n="lang_title">Four Languages, One Voice</h2>
+        </div>
+        <div class="langs__grid stagger-children" id="langsGrid">
+            <div class="lang-card">
+                <div class="lang-card__name" data-i18n="lang_es">Spanish</div>
+                <div class="lang-card__level" data-i18n="lang_es_level">Native</div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="--w: 100%"></div></div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-card__name" data-i18n="lang_en">English</div>
+                <div class="lang-card__level" data-i18n="lang_en_level">Fluent (C2)</div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="--w: 95%"></div></div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-card__name" data-i18n="lang_de">German</div>
+                <div class="lang-card__level" data-i18n="lang_de_level">Fluent (C1)</div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="--w: 90%"></div></div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-card__name" data-i18n="lang_zh">Chinese</div>
+                <div class="lang-card__level" data-i18n="lang_zh_level">Basic (A2)</div>
+                <div class="progress-bar"><div class="progress-bar__fill" style="--w: 25%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TRAITS
+     ============================================ -->
+<section class="traits-section" id="traits">
+    <div class="container">
+        <div class="section-header section-header--center reveal">
+            <div class="section-tag" data-i18n="traits_tag">Personality</div>
+            <h2 class="section-title" data-i18n="traits_title">How I Work</h2>
+        </div>
+        <div class="traits__grid stagger-children">
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F9E0;</div>
+                <div class="trait-card__name" data-i18n="tr1_n">Analytical</div>
+                <p class="trait-card__desc" data-i18n="tr1_d">Breaks down complex problems into clear parts.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F680;</div>
+                <div class="trait-card__name" data-i18n="tr2_n">Innovative</div>
+                <p class="trait-card__desc" data-i18n="tr2_d">Constantly seeking creative, modern solutions.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F93A;</div>
+                <div class="trait-card__name" data-i18n="tr3_n">Strategic</div>
+                <p class="trait-card__desc" data-i18n="tr3_d">Decisions based on long-term thinking.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F3AF;</div>
+                <div class="trait-card__name" data-i18n="tr4_n">Meticulous</div>
+                <p class="trait-card__desc" data-i18n="tr4_d">Precision in every detail, every time.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F4A1;</div>
+                <div class="trait-card__name" data-i18n="tr5_n">Curious</div>
+                <p class="trait-card__desc" data-i18n="tr5_d">First to adopt new tech and concepts.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F916;</div>
+                <div class="trait-card__name" data-i18n="tr6_n">Autonomous</div>
+                <p class="trait-card__desc" data-i18n="tr6_d">Thrives independently as a proactive agent.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F42E;</div>
+                <div class="trait-card__name" data-i18n="tr7_n">Obstinate</div>
+                <p class="trait-card__desc" data-i18n="tr7_d">Stands firm for deep-seated beliefs.</p>
+            </div>
+            <div class="trait-card">
+                <div class="trait-card__icon">&#x1F9D8;</div>
+                <div class="trait-card__name" data-i18n="tr8_n">Serene</div>
+                <p class="trait-card__desc" data-i18n="tr8_d">Calm under pressure, always in control.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <div class="reveal">
+            <div class="section-tag" data-i18n="cta_tag">Let's work together</div>
+            <h2 class="section-title" data-i18n="cta_title">Ready to turn complexity<br>into clarity?</h2>
+            <p class="section-subtitle" data-i18n="cta_sub">Whether you need documentation, an AI workshop, or a product prototype &mdash; I deliver fast, remotely, and to the point.</p>
+        </div>
+        <div class="cta-details reveal reveal-delay-1">
+            <div class="cta-detail"><span class="icon">&#x2713;</span> <span data-i18n="cta_d1">Remote worldwide</span></div>
+            <div class="cta-detail"><span class="icon">&#x2713;</span> <span data-i18n="cta_d2">Long-term or project-based</span></div>
+            <div class="cta-detail"><span class="icon">&#x2713;</span> <span data-i18n="cta_d3">Crypto payments accepted</span></div>
+            <div class="cta-detail"><span class="icon">&#x2713;</span> <span data-i18n="cta_d4">Available now</span></div>
+        </div>
+        <div class="cta-buttons reveal reveal-delay-2">
+            <a href="/cdn-cgi/l/email-protection#48202d2424270829243e293a272f29662b2725" class="btn btn--primary" data-i18n="cta_btn">Start a conversation &rarr;</a>
+            <a href="https://www.linkedin.com/in/alvarogarciabarbon" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container footer__inner">
+        <p class="footer__copy" data-i18n="footer_copy">&copy; 2025 Álvaro García. Built with obsessive attention to detail.</p>
+        <div class="footer__links">
+            <a href="/cdn-cgi/l/email-protection#3c54595050537c5d504a5d4e535b5d125f5351"><span class="__cf_email__" data-cfemail="08606d6464674869647e697a676f69266b6765">[email&#160;protected]</span></a>
+            <a href="https://www.linkedin.com/in/alvarogarciabarbon" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://chinese.alvaroga.com" target="_blank" rel="noopener">Hanzi Samurai</a>
+        </div>
+    </div>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ============================================
+// HEADER SCROLL EFFECT
+// ============================================
+const header = document.getElementById('header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 50);
+    lastScroll = y;
+}, { passive: true });
+
+// ============================================
+// MOBILE NAV
+// ============================================
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+});
+
+function closeMobileNav() {
+    mobileNav.classList.remove('open');
+}
+
+// ============================================
+// INTERSECTION OBSERVER — SCROLL ANIMATIONS
+// ============================================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+
+            // Animate progress bars
+            entry.target.querySelectorAll('.progress-bar__fill').forEach(bar => {
+                bar.classList.add('animate');
+            });
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .stagger-children').forEach(el => {
+    observer.observe(el);
+});
+
+// Also observe the langs grid for progress bars
+const langsGrid = document.getElementById('langsGrid');
+if (langsGrid) observer.observe(langsGrid);
+
+// ============================================
+// CURSOR GLOW (desktop only)
+// ============================================
+if (window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.getElementById('cursorGlow');
+    let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    function animateGlow() {
+        glowX += (mouseX - glowX) * 0.08;
+        glowY += (mouseY - glowY) * 0.08;
+        glow.style.left = glowX + 'px';
+        glow.style.top = glowY + 'px';
+        requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+}
+
+// ============================================
+// SMOOTH ANCHOR SCROLL (fallback)
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ============================================
+// i18n — LANGUAGE SWITCHER
+// ============================================
+const i18n = {
+en: {
+    nav_about: "About",
+    nav_products: "Products",
+    nav_services: "Services",
+    nav_portfolio: "Portfolio",
+    nav_testimonials: "Testimonials",
+    header_cta: "Let's talk &rarr;",
+    nav_cta: "Let's talk",
+    hero_badge: "Available for projects &mdash; remote worldwide",
+    hero_h1: 'I build things<br>that <span class="gradient-text">teach people.</span>',
+    hero_sub: "Product builder. AI trainer to 2,000+ employees. Technical writer. 12+ years turning complex tech into products people love and teams that actually get AI.",
+    hero_cta: "Start a conversation &rarr;",
+    hero_scroll: "scroll",
+    marquee_label: "Trusted by teams at",
+    about_title: "Linguist turned builder.<br>Writer turned maker.",
+    about_p1: 'I went from studying 15 languages to working at <strong>Nintendo</strong> at 23. Since then I\'ve documented APIs at <strong>Amazon</strong>, wrote UX copy for scientific instruments at <strong>Metrohm</strong>, and spent three years at <strong>Frontiers</strong> &mdash; where the role evolved far beyond documentation.',
+    about_p2: 'At Frontiers, I <strong>trained over 2,000 employees on AI</strong>, built automated workflows, launched a company-wide <strong>prompting community</strong> with weekly AI news and discussions, and drove initiatives that reshaped how the organization adopted generative AI. The last two of my three years there were dedicated to <strong>AI education and change management</strong> at scale.',
+    about_p3: 'I was using GPT-3 before ChatGPT existed. Today I hold <strong>Google Cloud Gen AI certifications</strong>, build AI-integrated products, and ship language-learning apps powered by <strong>spaced repetition and the Claude API</strong>. I don\'t just write about technology &mdash; I build with it.',
+    stat1_label: "Employees trained on AI",
+    stat2_label: "Languages spoken",
+    stat3_label: "Newsletter subscribers (prev.)",
+    stat4_label: "LinkedIn followers",
+    hl1_title: "AI Leader &amp; Early Adopter",
+    hl1_desc: "Trained 2,000+ employees on AI at Frontiers. Built automated workflows, launched a prompting community, and led AI adoption initiatives. Google Cloud Gen AI certified. Using LLMs since GPT-3.",
+    hl2_title: "Product Builder",
+    hl2_desc: "From zero to shipped: React apps, Firebase backends, PWAs on Google Play. I code, design, and deploy &mdash; end to end.",
+    hl3_title: "Technical Writer",
+    hl3_desc: "Confluence architectures, API docs, UX copy, release notes. I've written for developers, product managers, and end users at scale.",
+    hl4_title: "Trainer &amp; Speaker",
+    hl4_desc: 'Presented to audiences of 700+, pitched initiatives to C-level executives, and coached leaders on presentation and delivery. I make complex ideas feel intuitive.',
+    products_title: "Products &amp; Prototypes",
+    products_sub: "Where linguistics, data modeling, and software meet. I don't just document tech &mdash; I ship it.",
+    hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
+    hanzi_desc: "A full-stack Chinese learning game covering HSK 1&ndash;3 with 2,449 vocabulary entries. Four game modes (Journey, Visions, Forge, Library) with SM-2 spaced repetition tracking recall, recognition, and listening independently. 10+ drill types, native audio, grammar in context, and a samurai combat mechanic that makes studying addictive.",
+    hanzi_web: "Play on web",
+    hanzi_android: "Soon on Android",
+    german_title: "German Learning Prototype",
+    german_desc: "An experimental platform for learning German through natural, intuitive methods. Early-stage prototype exploring how spaced repetition and contextual drilling can be applied to German grammar &mdash; one of the hardest parts for any learner. Same philosophy: every word from every angle.",
+    german_link: "Explore prototype",
+    services_title: "What I Can Do For You",
+    services_sub: "From documentation to AI workshops &mdash; I help teams communicate clearly and ship faster.",
+    svc1_t: "AI Training &amp; Workshops", svc1_d: "Trained 2,000+ people on prompt engineering, LLM workflows, and AI agents. I make your entire org AI-literate.",
+    svc2_t: "Product Creation &amp; Prototyping", svc2_d: "From concept to shipped product. React, Firebase, APIs, PWAs on Google Play. I design, build, and deploy end to end &mdash; fast.",
+    svc3_t: "Presentation Coaching", svc3_d: "Storytelling frameworks, slide design, and delivery techniques. Make your next talk unforgettable.",
+    svc4_t: "Learning Design", svc4_d: "Courses, onboarding flows, and training programs that stick. Built around how adults actually learn.",
+    svc5_t: "Technical Writing", svc5_d: "API docs, user guides, release notes, information architecture. Clear writing for complex systems.",
+    svc6_t: "Process &amp; Automation", svc6_d: "Automated workflows, Confluence structures, communication systems, tool adoption. Cut the noise, boost the signal.",
+    svc7_t: "UX Writing &amp; Copywriting", svc7_d: "Microcopy, interface text, email campaigns, and landing pages. Words that convert and delight.",
+    svc8_t: "Localization &amp; Translation", svc8_d: "Cultural adaptation across ES/EN/DE. Nintendo-trained linguist. Games, software, and marketing.",
+    svc9_t: "Proofreading &amp; QA", svc9_d: "Linguistic QA, functional testing, accuracy review. Nothing ships with errors on my watch.",
+    portfolio_title: "Selected Work",
+    portfolio_sub: "A cross-section of 12 years in tech, gaming, publishing, and education.",
+    pf1_cat: "Technical Writing", pf1_d: "Scalable information architecture for Frontiers' go-to documentation tool.",
+    pf2_cat: "Technical Writing", pf2_d: "Communication culture revamp at Frontiers through structured Teams adoption.",
+    pf3_cat: "AI Training", pf3_d: "AI training program for 2,000+ employees. Prompting community, weekly AI news, automated workflows, and change management.",
+    pf4_cat: "Localization", pf4_d: "Localized four titles: A Link Between Worlds, Majora's Mask 3D, Wind Waker HD, and Hyrule Warriors.",
+    pf5_cat: "UX Writing", pf5_d: "User guides, help docs, and UX element translation for Amazon's seller platform.",
+    pf6_cat: "Product / Training", pf6_d: "English learning system for Spanish speakers &mdash; grammar, vocabulary, and pronunciation.",
+    pf7_cat: "Copywriting", pf7_d: "Copy for own language-learning products resulting in thousands of sales.",
+    pf8_cat: "UX Writing", pf8_d: "UX texts and release notes in German with focus on terminology accuracy.",
+    pf9_cat: "QA Testing", pf9_d: "Linguistic and functional testing for the award-winning action RPG (PC & consoles).",
+    testimonials_title: "What People Say",
+    lang_tag: "Languages",
+    lang_title: "Four Languages, One Voice",
+    lang_es: "Spanish", lang_es_level: "Native",
+    lang_en: "English", lang_en_level: "Fluent (C2)",
+    lang_de: "German", lang_de_level: "Fluent (C1)",
+    lang_zh: "Chinese", lang_zh_level: "Basic (A2)",
+    traits_tag: "Personality",
+    traits_title: "How I Work",
+    tr1_n: "Analytical", tr1_d: "Breaks down complex problems into clear parts.",
+    tr2_n: "Innovative", tr2_d: "Constantly seeking creative, modern solutions.",
+    tr3_n: "Strategic", tr3_d: "Decisions based on long-term thinking.",
+    tr4_n: "Meticulous", tr4_d: "Precision in every detail, every time.",
+    tr5_n: "Curious", tr5_d: "First to adopt new tech and concepts.",
+    tr6_n: "Autonomous", tr6_d: "Thrives independently as a proactive agent.",
+    tr7_n: "Obstinate", tr7_d: "Stands firm for deep-seated beliefs.",
+    tr8_n: "Serene", tr8_d: "Calm under pressure, always in control.",
+    cta_tag: "Let's work together",
+    cta_title: "Ready to turn complexity<br>into clarity?",
+    cta_sub: "Whether you need documentation, an AI workshop, or a product prototype &mdash; I deliver fast, remotely, and to the point.",
+    cta_d1: "Remote worldwide", cta_d2: "Long-term or project-based", cta_d3: "Crypto payments accepted", cta_d4: "Available now",
+    cta_btn: "Start a conversation &rarr;",
+    footer_copy: "&copy; 2025 Álvaro García. Built with obsessive attention to detail."
+},
+es: {
+    nav_about: "Sobre mí",
+    nav_products: "Productos",
+    nav_services: "Servicios",
+    nav_portfolio: "Portfolio",
+    nav_testimonials: "Testimonios",
+    header_cta: "Hablemos &rarr;",
+    nav_cta: "Hablemos",
+    hero_badge: "Disponible para proyectos &mdash; remoto en todo el mundo",
+    hero_h1: 'Construyo cosas<br>que <span class="gradient-text">enseñan.</span>',
+    hero_sub: "Constructor de productos. Formador en IA para más de 2.000 empleados. Redactor técnico. Más de 12 años convirtiendo tecnología compleja en productos que enamoran y equipos que realmente entienden la IA.",
+    hero_cta: "Iniciar conversación &rarr;",
+    hero_scroll: "scroll",
+    marquee_label: "Han confiado en mí equipos de",
+    about_title: "De lingüista a constructor.<br>De escritor a creador.",
+    about_p1: 'Pasé de estudiar 15 idiomas a trabajar en <strong>Nintendo</strong> con 23 años. Desde entonces he documentado APIs en <strong>Amazon</strong>, escrito UX copy para instrumentos científicos en <strong>Metrohm</strong> y pasado tres años en <strong>Frontiers</strong> &mdash; donde el rol evolucionó mucho más allá de la documentación.',
+    about_p2: 'En Frontiers, <strong>formé a más de 2.000 empleados en IA</strong>, creé flujos automatizados, lancé una <strong>comunidad de prompting</strong> con noticias semanales sobre IA y debates, e impulsé iniciativas que transformaron la adopción de IA generativa en la organización. Los últimos dos de mis tres años allí los dediqué a la <strong>educación en IA y gestión del cambio</strong> a escala.',
+    about_p3: 'Usaba GPT-3 antes de que existiera ChatGPT. Hoy tengo <strong>certificaciones de Google Cloud Gen AI</strong>, construyo productos integrados con IA y publico apps de aprendizaje de idiomas basadas en <strong>repetición espaciada y la API de Claude</strong>. No solo escribo sobre tecnología &mdash; construyo con ella.',
+    stat1_label: "Empleados formados en IA",
+    stat2_label: "Idiomas hablados",
+    stat3_label: "Suscriptores a newsletter (prev.)",
+    stat4_label: "Seguidores en LinkedIn",
+    hl1_title: "Líder en IA y Early Adopter",
+    hl1_desc: "Formé a más de 2.000 empleados en IA en Frontiers. Creé flujos automatizados, lancé una comunidad de prompting y lideré iniciativas de adopción de IA. Certificado Google Cloud Gen AI. Usando LLMs desde GPT-3.",
+    hl2_title: "Constructor de productos",
+    hl2_desc: "De cero a producción: apps React, backends Firebase, PWAs en Google Play. Programo, diseño y despliego &mdash; de principio a fin.",
+    hl3_title: "Redactor técnico",
+    hl3_desc: "Arquitecturas Confluence, docs de API, UX copy, notas de versión. He escrito para desarrolladores, product managers y usuarios finales a escala.",
+    hl4_title: "Formador y ponente",
+    hl4_desc: 'Presentaciones ante más de 700 personas, iniciativas presentadas a C-level y coaching a ejecutivos en presentación y delivery. Hago que las ideas complejas sean intuitivas.',
+    products_title: "Productos y prototipos",
+    products_sub: "Donde la lingüística, el modelado de datos y el software se encuentran. No solo documento tecnología &mdash; la construyo.",
+    hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
+    hanzi_desc: "Un juego completo para aprender chino que cubre HSK 1&ndash;3 con 2.449 entradas de vocabulario. Cuatro modos de juego (Journey, Visions, Forge, Library) con repetición espaciada SM-2 que rastrea recuerdo, reconocimiento y escucha de forma independiente. Más de 10 tipos de ejercicios, audio nativo, gramática en contexto y una mecánica de combate samurái que hace el estudio adictivo.",
+    hanzi_web: "Jugar en web",
+    hanzi_android: "Próximamente en Android",
+    german_title: "Prototipo de alemán",
+    german_desc: "Una plataforma experimental para aprender alemán mediante métodos naturales e intuitivos. Prototipo en fase inicial que explora cómo la repetición espaciada y los ejercicios contextuales pueden aplicarse a la gramática alemana &mdash; una de las partes más difíciles. Misma filosofía: cada palabra desde todos los ángulos.",
+    german_link: "Explorar prototipo",
+    services_title: "Qué puedo hacer por ti",
+    services_sub: "De documentación a talleres de IA &mdash; ayudo a equipos a comunicarse mejor y entregar más rápido.",
+    svc1_t: "Formación en IA y talleres", svc1_d: "Formé a más de 2.000 personas en prompt engineering, flujos con LLMs y agentes IA. Hago que toda tu organización domine la IA.",
+    svc2_t: "Creación de productos y prototipado", svc2_d: "Del concepto al producto lanzado. React, Firebase, APIs, PWAs en Google Play. Diseño, construyo y despliego de principio a fin &mdash; rápido.",
+    svc3_t: "Coaching de presentaciones", svc3_d: "Storytelling, diseño de slides y técnicas de presentación. Haz que tu próxima charla sea inolvidable.",
+    svc4_t: "Diseño de aprendizaje", svc4_d: "Cursos, flujos de onboarding y programas de formación efectivos. Diseñados según cómo aprenden los adultos de verdad.",
+    svc5_t: "Redacción técnica", svc5_d: "Docs de API, guías de usuario, notas de versión, arquitectura de información. Escritura clara para sistemas complejos.",
+    svc6_t: "Procesos y automatización", svc6_d: "Flujos automatizados, estructuras Confluence, sistemas de comunicación, adopción de herramientas. Menos ruido, más señal.",
+    svc7_t: "UX Writing y copywriting", svc7_d: "Microcopy, textos de interfaz, campañas de email y landing pages. Palabras que convierten y enamoran.",
+    svc8_t: "Localización y traducción", svc8_d: "Adaptación cultural EN/ES/DE. Lingüista formado en Nintendo. Videojuegos, software y marketing.",
+    svc9_t: "Corrección y QA", svc9_d: "QA lingüístico, testing funcional, revisión de precisión. Nada sale con errores bajo mi supervisión.",
+    portfolio_title: "Trabajos destacados",
+    portfolio_sub: "Un recorrido por 12 años en tecnología, videojuegos, publicación y educación.",
+    pf1_cat: "Redacción técnica", pf1_d: "Arquitectura de información escalable para la herramienta de documentación de referencia en Frontiers.",
+    pf2_cat: "Redacción técnica", pf2_d: "Transformación de la cultura de comunicación en Frontiers mediante la adopción estructurada de Teams.",
+    pf3_cat: "Formación en IA", pf3_d: "Programa de formación en IA para más de 2.000 empleados. Comunidad de prompting, noticias semanales de IA, flujos automatizados y gestión del cambio.",
+    pf4_cat: "Localización", pf4_d: "Localicé cuatro títulos: A Link Between Worlds, Majora's Mask 3D, Wind Waker HD y Hyrule Warriors.",
+    pf5_cat: "UX Writing", pf5_d: "Guías de usuario, docs de ayuda y traducción de elementos UX para la plataforma de vendedores de Amazon.",
+    pf6_cat: "Producto / Formación", pf6_d: "Sistema de aprendizaje de inglés para hispanohablantes &mdash; gramática, vocabulario y pronunciación.",
+    pf7_cat: "Copywriting", pf7_d: "Copy para productos propios de aprendizaje de idiomas con miles de ventas.",
+    pf8_cat: "UX Writing", pf8_d: "Textos UX y notas de versión en alemán con foco en precisión terminológica.",
+    pf9_cat: "Testing QA", pf9_d: "Testing lingüístico y funcional para el aclamado RPG de acción (PC y consolas).",
+    testimonials_title: "Lo que dicen de mí",
+    lang_tag: "Idiomas",
+    lang_title: "Cuatro idiomas, una sola voz",
+    lang_es: "Español", lang_es_level: "Nativo",
+    lang_en: "Inglés", lang_en_level: "Fluido (C2)",
+    lang_de: "Alemán", lang_de_level: "Fluido (C1)",
+    lang_zh: "Chino", lang_zh_level: "Básico (A2)",
+    traits_tag: "Personalidad",
+    traits_title: "Cómo trabajo",
+    tr1_n: "Analítico", tr1_d: "Descompone problemas complejos en partes claras.",
+    tr2_n: "Innovador", tr2_d: "Siempre buscando soluciones creativas y modernas.",
+    tr3_n: "Estratégico", tr3_d: "Decisiones basadas en pensamiento a largo plazo.",
+    tr4_n: "Meticuloso", tr4_d: "Precisión en cada detalle, siempre.",
+    tr5_n: "Curioso", tr5_d: "El primero en adoptar nuevas tecnologías y conceptos.",
+    tr6_n: "Autónomo", tr6_d: "Prospera de forma independiente como agente proactivo.",
+    tr7_n: "Obstinado", tr7_d: "Se mantiene firme en sus convicciones profundas.",
+    tr8_n: "Sereno", tr8_d: "Calma bajo presión, siempre en control.",
+    cta_tag: "Trabajemos juntos",
+    cta_title: "¿Listo para convertir la complejidad<br>en claridad?",
+    cta_sub: "Ya necesites documentación, un taller de IA o un prototipo de producto &mdash; entrego rápido, en remoto y al grano.",
+    cta_d1: "Remoto en todo el mundo", cta_d2: "Largo plazo o por proyecto", cta_d3: "Pagos en cripto aceptados", cta_d4: "Disponible ahora",
+    cta_btn: "Iniciar conversación &rarr;",
+    footer_copy: "&copy; 2025 Álvaro García. Construido con obsesiva atención al detalle."
+},
+de: {
+    nav_about: "Über mich",
+    nav_products: "Produkte",
+    nav_services: "Leistungen",
+    nav_portfolio: "Portfolio",
+    nav_testimonials: "Referenzen",
+    header_cta: "Kontakt &rarr;",
+    nav_cta: "Kontakt",
+    hero_badge: "Verfügbar für Projekte &mdash; weltweit remote",
+    hero_h1: 'Ich baue Dinge,<br>die <span class="gradient-text">Menschen lehren.</span>',
+    hero_sub: "Produktentwickler. KI-Trainer für über 2.000 Mitarbeitende. Technical Writer. Über 12 Jahre Erfahrung darin, komplexe Technologie in Produkte zu verwandeln, die begeistern, und Teams, die KI wirklich verstehen.",
+    hero_cta: "Gespräch starten &rarr;",
+    hero_scroll: "scrollen",
+    marquee_label: "Vertraut von Teams bei",
+    about_title: "Vom Linguisten zum Builder.<br>Vom Texter zum Macher.",
+    about_p1: 'Ich ging vom Studium von 15 Sprachen zu einer Stelle bei <strong>Nintendo</strong> mit 23. Seitdem habe ich APIs bei <strong>Amazon</strong> dokumentiert, UX-Texte für wissenschaftliche Instrumente bei <strong>Metrohm</strong> geschrieben und drei Jahre bei <strong>Frontiers</strong> verbracht &mdash; wo die Rolle weit über Dokumentation hinauswuchs.',
+    about_p2: 'Bei Frontiers habe ich <strong>über 2.000 Mitarbeitende in KI geschult</strong>, automatisierte Workflows aufgebaut, eine unternehmensweite <strong>Prompting-Community</strong> mit wöchentlichen KI-News und Diskussionen gestartet und Initiativen vorangetrieben, die die Einführung generativer KI in der Organisation veränderten. Die letzten zwei meiner drei Jahre dort widmete ich der <strong>KI-Bildung und dem Change Management</strong> im großen Maßstab.',
+    about_p3: 'Ich nutzte GPT-3 noch bevor ChatGPT existierte. Heute besitze ich <strong>Google Cloud Gen AI-Zertifizierungen</strong>, baue KI-integrierte Produkte und veröffentliche Sprachlern-Apps auf Basis von <strong>Spaced Repetition und der Claude API</strong>. Ich schreibe nicht nur über Technologie &mdash; ich baue damit.',
+    stat1_label: "Mitarbeitende in KI geschult",
+    stat2_label: "Gesprochene Sprachen",
+    stat3_label: "Newsletter-Abonnenten (zuvor)",
+    stat4_label: "LinkedIn-Follower",
+    hl1_title: "KI-Leader &amp; Early Adopter",
+    hl1_desc: "Über 2.000 Mitarbeitende bei Frontiers in KI geschult. Automatisierte Workflows aufgebaut, Prompting-Community gestartet und KI-Adoptionsinitiativen geleitet. Google Cloud Gen AI-zertifiziert. LLMs seit GPT-3.",
+    hl2_title: "Produktentwickler",
+    hl2_desc: "Von null bis zum Launch: React-Apps, Firebase-Backends, PWAs auf Google Play. Ich programmiere, designe und deploye &mdash; End-to-End.",
+    hl3_title: "Technical Writer",
+    hl3_desc: "Confluence-Architekturen, API-Docs, UX-Texte, Release Notes. Ich habe für Entwickler, Product Manager und Endnutzer in großem Umfang geschrieben.",
+    hl4_title: "Trainer &amp; Speaker",
+    hl4_desc: 'Präsentationen vor über 700 Personen, Initiativen vor C-Level-Führungskräften vorgestellt und Führungskräfte in Präsentation und Delivery gecoacht. Ich mache komplexe Ideen intuitiv.',
+    products_title: "Produkte &amp; Prototypen",
+    products_sub: "Wo Linguistik, Datenmodellierung und Software zusammentreffen. Ich dokumentiere Technik nicht nur &mdash; ich baue sie.",
+    hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
+    hanzi_desc: "Ein Full-Stack-Lernspiel für Chinesisch, das HSK 1&ndash;3 mit 2.449 Vokabeleinträgen abdeckt. Vier Spielmodi (Journey, Visions, Forge, Library) mit SM-2 Spaced Repetition, die Recall, Erkennung und Hörverständnis unabhängig tracken. 10+ Übungstypen, Muttersprachler-Audio, Grammatik im Kontext und eine Samurai-Kampfmechanik, die süchtig macht.",
+    hanzi_web: "Im Web spielen",
+    hanzi_android: "Bald auf Android",
+    german_title: "Deutsch-Lernprototyp",
+    german_desc: "Eine experimentelle Plattform zum Deutschlernen durch natürliche, intuitive Methoden. Frühphasen-Prototyp, der erforscht, wie Spaced Repetition und kontextuelle Übungen auf die deutsche Grammatik angewandt werden können &mdash; einer der schwierigsten Teile. Gleiche Philosophie: jedes Wort aus jedem Blickwinkel.",
+    german_link: "Prototyp erkunden",
+    services_title: "Was ich für Sie tun kann",
+    services_sub: "Von Dokumentation bis KI-Workshops &mdash; ich helfe Teams, klar zu kommunizieren und schneller zu liefern.",
+    svc1_t: "KI-Training &amp; Workshops", svc1_d: "Über 2.000 Menschen in Prompt Engineering, LLM-Workflows und KI-Agenten geschult. Ich mache Ihre gesamte Organisation KI-kompetent.",
+    svc2_t: "Produktentwicklung &amp; Prototyping", svc2_d: "Vom Konzept zum fertigen Produkt. React, Firebase, APIs, PWAs auf Google Play. Ich designe, baue und deploye End-to-End &mdash; schnell.",
+    svc3_t: "Präsentationscoaching", svc3_d: "Storytelling-Frameworks, Slide-Design und Vortragstechniken. Machen Sie Ihren nächsten Talk unvergesslich.",
+    svc4_t: "Lerndesign", svc4_d: "Kurse, Onboarding-Flows und Schulungsprogramme, die hängenbleiben. Konzipiert für echtes Erwachsenenlernen.",
+    svc5_t: "Technical Writing", svc5_d: "API-Docs, Benutzerhandbücher, Release Notes, Informationsarchitektur. Klare Texte für komplexe Systeme.",
+    svc6_t: "Prozesse &amp; Automatisierung", svc6_d: "Automatisierte Workflows, Confluence-Strukturen, Kommunikationssysteme, Tool-Adoption. Weniger Rauschen, mehr Signal.",
+    svc7_t: "UX Writing &amp; Copywriting", svc7_d: "Microcopy, Interface-Texte, E-Mail-Kampagnen und Landing Pages. Worte, die konvertieren und begeistern.",
+    svc8_t: "Lokalisierung &amp; Übersetzung", svc8_d: "Kulturelle Anpassung EN/ES/DE. Bei Nintendo ausgebildeter Linguist. Games, Software und Marketing.",
+    svc9_t: "Lektorat &amp; QA", svc9_d: "Linguistisches QA, funktionales Testing, Genauigkeitsprüfung. Unter meiner Aufsicht gehen keine Fehler raus.",
+    portfolio_title: "Ausgewählte Arbeiten",
+    portfolio_sub: "Ein Querschnitt aus 12 Jahren in Tech, Gaming, Publishing und Bildung.",
+    pf1_cat: "Technical Writing", pf1_d: "Skalierbare Informationsarchitektur für das zentrale Dokumentationstool bei Frontiers.",
+    pf2_cat: "Technical Writing", pf2_d: "Neugestaltung der Kommunikationskultur bei Frontiers durch strukturierte Teams-Einführung.",
+    pf3_cat: "KI-Training", pf3_d: "KI-Schulungsprogramm für über 2.000 Mitarbeitende. Prompting-Community, wöchentliche KI-News, automatisierte Workflows und Change Management.",
+    pf4_cat: "Lokalisierung", pf4_d: "Vier Titel lokalisiert: A Link Between Worlds, Majora's Mask 3D, Wind Waker HD und Hyrule Warriors.",
+    pf5_cat: "UX Writing", pf5_d: "Benutzerhandbücher, Hilfedokumente und UX-Übersetzung für Amazons Verkäuferplattform.",
+    pf6_cat: "Produkt / Training", pf6_d: "Englisch-Lernsystem für Spanischsprechende &mdash; Grammatik, Wortschatz und Aussprache.",
+    pf7_cat: "Copywriting", pf7_d: "Texte für eigene Sprachlernprodukte mit tausenden Verkäufen.",
+    pf8_cat: "UX Writing", pf8_d: "UX-Texte und Release Notes auf Deutsch mit Fokus auf terminologische Genauigkeit.",
+    pf9_cat: "QA Testing", pf9_d: "Linguistisches und funktionales Testing für das preisgekrönte Action-RPG (PC & Konsolen).",
+    testimonials_title: "Was andere sagen",
+    lang_tag: "Sprachen",
+    lang_title: "Vier Sprachen, eine Stimme",
+    lang_es: "Spanisch", lang_es_level: "Muttersprache",
+    lang_en: "Englisch", lang_en_level: "Fließend (C2)",
+    lang_de: "Deutsch", lang_de_level: "Fließend (C1)",
+    lang_zh: "Chinesisch", lang_zh_level: "Grundkenntnisse (A2)",
+    traits_tag: "Persönlichkeit",
+    traits_title: "Wie ich arbeite",
+    tr1_n: "Analytisch", tr1_d: "Zerlegt komplexe Probleme in klare Teile.",
+    tr2_n: "Innovativ", tr2_d: "Ständig auf der Suche nach kreativen, modernen Lösungen.",
+    tr3_n: "Strategisch", tr3_d: "Entscheidungen auf Basis langfristigen Denkens.",
+    tr4_n: "Akribisch", tr4_d: "Präzision in jedem Detail, jedes Mal.",
+    tr5_n: "Neugierig", tr5_d: "Erster bei neuer Technologie und neuen Konzepten.",
+    tr6_n: "Autonom", tr6_d: "Arbeitet selbstständig als proaktiver Agent.",
+    tr7_n: "Hartnäckig", tr7_d: "Steht fest zu tiefgreifenden Überzeugungen.",
+    tr8_n: "Gelassen", tr8_d: "Ruhig unter Druck, immer in Kontrolle.",
+    cta_tag: "Zusammenarbeiten",
+    cta_title: "Bereit, Komplexität<br>in Klarheit zu verwandeln?",
+    cta_sub: "Ob Dokumentation, KI-Workshop oder Produkt-Prototyp &mdash; ich liefere schnell, remote und auf den Punkt.",
+    cta_d1: "Weltweit remote", cta_d2: "Langfristig oder projektbasiert", cta_d3: "Krypto-Zahlungen akzeptiert", cta_d4: "Jetzt verfügbar",
+    cta_btn: "Gespräch starten &rarr;",
+    footer_copy: "&copy; 2025 Álvaro García. Gebaut mit obsessiver Liebe zum Detail."
+},
+zh: {
+    nav_about: "关于",
+    nav_products: "产品",
+    nav_services: "服务",
+    nav_portfolio: "作品集",
+    nav_testimonials: "推荐",
+    header_cta: "联系我 &rarr;",
+    nav_cta: "联系我",
+    hero_badge: "可接项目 &mdash; 全球远程",
+    hero_h1: '我构建<br><span class="gradient-text">教人学习的产品。</span>',
+    hero_sub: "产品构建者。为2,000多名员工提供AI培训。技术写作者。12年以上将复杂技术转化为人们喜爱的产品和真正理解AI的团队的经验。",
+    hero_cta: "开始对话 &rarr;",
+    hero_scroll: "滚动",
+    marquee_label: "受到以下团队信赖",
+    about_title: "从语言学家到构建者。<br>从写作者到创造者。",
+    about_p1: '我从学习15门语言到23岁进入<strong>任天堂</strong>工作。此后，我在<strong>亚马逊</strong>撰写API文档，为<strong>Metrohm</strong>的科学仪器编写UX文案，并在<strong>Frontiers</strong>工作了三年 &mdash; 在那里我的角色远远超越了文档工作。',
+    about_p2: '在Frontiers，我<strong>培训了超过2,000名员工使用AI</strong>，构建了自动化工作流，发起了全公司的<strong>提示词社区</strong>，每周分享AI新闻和讨论，并推动了重塑组织采用生成式AI方式的倡议。在那里的三年中，最后两年我专注于<strong>大规模AI教育和变革管理</strong>。',
+    about_p3: '在ChatGPT存在之前，我就已经在使用GPT-3。如今我持有<strong>Google Cloud Gen AI认证</strong>，构建AI集成产品，并发布基于<strong>间隔重复和Claude API</strong>的语言学习应用。我不仅写关于技术的文章 &mdash; 我用技术来构建。',
+    stat1_label: "接受AI培训的员工",
+    stat2_label: "掌握的语言",
+    stat3_label: "新闻通讯订阅者（此前）",
+    stat4_label: "LinkedIn关注者",
+    hl1_title: "AI领导者和早期采用者",
+    hl1_desc: "在Frontiers培训了超过2,000名员工使用AI。构建自动化工作流，发起提示词社区，领导AI采用计划。Google Cloud Gen AI认证。自GPT-3起使用LLM。",
+    hl2_title: "产品构建者",
+    hl2_desc: "从零到上线：React应用、Firebase后端、Google Play上的PWA。我编码、设计和部署 &mdash; 端到端。",
+    hl3_title: "技术写作者",
+    hl3_desc: "Confluence架构、API文档、UX文案、发布说明。我为开发者、产品经理和终端用户大规模写作。",
+    hl4_title: "培训师和演讲者",
+    hl4_desc: '为700多人做过演讲，向C级高管展示计划，并辅导领导者的演讲和表达技巧。我让复杂的想法变得直观。',
+    products_title: "产品与原型",
+    products_sub: "语言学、数据建模和软件的交汇点。我不仅记录技术 &mdash; 我发布它。",
+    hanzi_title: "汉字侠 &#x6F22;&#x5B57;&#x4FE0;",
+    hanzi_desc: "一款全栈中文学习游戏，涵盖HSK 1&ndash;3，包含2,449个词汇条目。四种游戏模式（旅程、幻象、锻造、图书馆），采用SM-2间隔重复独立追踪回忆、识别和听力。10多种练习类型、母语音频、语境中的语法，以及让学习上瘾的武士战斗机制。",
+    hanzi_web: "网页版",
+    hanzi_android: "即将登陆Android",
+    german_title: "德语学习原型",
+    german_desc: "一个通过自然、直觉方法学习德语的实验平台。早期原型，探索间隔重复和上下文练习如何应用于德语语法 &mdash; 对任何学习者来说最难的部分之一。同样的理念：从每个角度学习每个词。",
+    german_link: "探索原型",
+    services_title: "我能为你做什么",
+    services_sub: "从文档到AI研讨会 &mdash; 我帮助团队清晰沟通、更快交付。",
+    svc1_t: "AI培训与研讨会", svc1_d: "培训了2,000多人学习提示工程、LLM工作流和AI代理。我让你的整个组织具备AI素养。",
+    svc2_t: "产品创造与原型开发", svc2_d: "从概念到上线产品。React、Firebase、API、Google Play上的PWA。我设计、构建和部署 &mdash; 端到端，快速交付。",
+    svc3_t: "演示辅导", svc3_d: "叙事框架、幻灯片设计和演讲技巧。让你的下次演讲令人难忘。",
+    svc4_t: "学习设计", svc4_d: "课程、入职流程和有效的培训项目。根据成人实际学习方式设计。",
+    svc5_t: "技术写作", svc5_d: "API文档、用户指南、发布说明、信息架构。为复杂系统提供清晰写作。",
+    svc6_t: "流程与自动化", svc6_d: "自动化工作流、Confluence结构、沟通系统、工具采用。减少噪音，增强信号。",
+    svc7_t: "UX写作与文案", svc7_d: "微文案、界面文本、邮件营销和落地页。能转化和打动人的文字。",
+    svc8_t: "本地化与翻译", svc8_d: "ES/EN/DE跨文化适配。任天堂培训的语言学家。游戏、软件和营销。",
+    svc9_t: "校对与QA", svc9_d: "语言QA、功能测试、准确性审核。在我的监督下，没有错误会通过。",
+    portfolio_title: "精选作品",
+    portfolio_sub: "横跨技术、游戏、出版和教育的12年精选。",
+    pf1_cat: "技术写作", pf1_d: "为Frontiers核心文档工具构建的可扩展信息架构。",
+    pf2_cat: "技术写作", pf2_d: "通过结构化的Teams采用重塑Frontiers的沟通文化。",
+    pf3_cat: "AI培训", pf3_d: "面向2,000多名员工的AI培训项目。提示词社区、每周AI新闻、自动化工作流和变革管理。",
+    pf4_cat: "本地化", pf4_d: "本地化了四款游戏：众神的三角力量2、魔吉拉的面具3D、风之杖HD和塞尔达无双。",
+    pf5_cat: "UX写作", pf5_d: "亚马逊卖家平台的用户指南、帮助文档和UX元素翻译。",
+    pf6_cat: "产品 / 培训", pf6_d: "面向西班牙语使用者的英语学习系统 &mdash; 语法、词汇和发音。",
+    pf7_cat: "文案写作", pf7_d: "为自有语言学习产品撰写文案，带来数千笔销售。",
+    pf8_cat: "UX写作", pf8_d: "德语UX文本和发布说明，专注于术语准确性。",
+    pf9_cat: "QA测试", pf9_d: "获奖动作RPG的语言和功能测试（PC和主机）。",
+    testimonials_title: "他们怎么说",
+    lang_tag: "语言",
+    lang_title: "四种语言，一个声音",
+    lang_es: "西班牙语", lang_es_level: "母语",
+    lang_en: "英语", lang_en_level: "流利 (C2)",
+    lang_de: "德语", lang_de_level: "流利 (C1)",
+    lang_zh: "中文", lang_zh_level: "基础 (A2)",
+    traits_tag: "个性",
+    traits_title: "我的工作方式",
+    tr1_n: "分析型", tr1_d: "将复杂问题分解为清晰的部分。",
+    tr2_n: "创新型", tr2_d: "不断寻求创意、现代的解决方案。",
+    tr3_n: "战略型", tr3_d: "基于长期思维做决策。",
+    tr4_n: "细致型", tr4_d: "每个细节都精准，每一次。",
+    tr5_n: "好奇型", tr5_d: "最先采用新技术和新概念。",
+    tr6_n: "自主型", tr6_d: "作为主动代理独立蓬勃发展。",
+    tr7_n: "执着型", tr7_d: "坚守内心深处的信念。",
+    tr8_n: "沉稳型", tr8_d: "压力下保持冷静，始终掌控。",
+    cta_tag: "一起合作",
+    cta_title: "准备好将复杂<br>变为清晰了吗？",
+    cta_sub: "无论你需要文档、AI研讨会还是产品原型 &mdash; 我快速、远程、精准交付。",
+    cta_d1: "全球远程", cta_d2: "长期或项目制", cta_d3: "接受加密货币支付", cta_d4: "现在可用",
+    cta_btn: "开始对话 &rarr;",
+    footer_copy: "&copy; 2025 Álvaro García. 以强迫症级的注意力构建。"
+}
+};
+
+// Language switcher logic
+function setLanguage(lang) {
+    if (!i18n[lang]) return;
+    const dict = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+            el.innerHTML = dict[key];
+        }
+    });
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    // Update active button
+    document.querySelectorAll('.lang-switch__btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    // Persist choice
+    localStorage.setItem('lang', lang);
+}
+
+// Init language switcher
+document.querySelectorAll('.lang-switch__btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+});
+
+// Load saved language preference
+const savedLang = localStorage.getItem('lang');
+if (savedLang && savedLang !== 'en') {
+    setLanguage(savedLang);
+}
+</script>
+
+</body>
+</html>
