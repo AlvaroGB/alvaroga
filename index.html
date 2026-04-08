@@ -289,12 +289,39 @@ section {
     box-shadow: 0 8px 30px var(--accent-glow-strong);
 }
 
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-xs);
+    text-decoration: none;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 1rem;
+}
+
 .hamburger {
     display: flex;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
     padding: 4px;
+    background: none;
+    border: none;
+    color: inherit;
+}
+
+/* Global focus indicators */
+:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 .hamburger span {
@@ -1360,12 +1387,14 @@ body:hover .cursor-glow { opacity: 1; }
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- Ambient background -->
-<div class="bg-grid"></div>
-<div class="orb orb--1"></div>
-<div class="orb orb--2"></div>
-<div class="orb orb--3"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="orb orb--1" aria-hidden="true"></div>
+<div class="orb orb--2" aria-hidden="true"></div>
+<div class="orb orb--3" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
 <div class="wrap">
 
@@ -1374,11 +1403,11 @@ body:hover .cursor-glow { opacity: 1; }
      ============================================ -->
 <header class="header" id="header">
     <div class="container header__inner">
-        <a href="#" class="header__logo">
-            <span class="dot"></span>
+        <a href="#hero" class="header__logo" aria-label="Álvaro García — back to top">
+            <span class="dot" aria-hidden="true"></span>
             Álvaro García
         </a>
-        <nav class="nav">
+        <nav class="nav" aria-label="Primary navigation">
             <ul>
                 <li><a href="#about" data-i18n="nav_about">About</a></li>
                 <li><a href="#products" data-i18n="nav_products">Products</a></li>
@@ -1388,25 +1417,25 @@ body:hover .cursor-glow { opacity: 1; }
             </ul>
         </nav>
         <div class="lang-switch" id="langSwitch">
-            <button class="lang-switch__btn active" data-lang="en">EN</button>
-            <button class="lang-switch__btn" data-lang="es">ES</button>
-            <button class="lang-switch__btn" data-lang="de">DE</button>
-            <button class="lang-switch__btn" data-lang="zh">ZH</button>
+            <button class="lang-switch__btn active" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+            <button class="lang-switch__btn" data-lang="es" aria-label="Switch to Spanish" aria-pressed="false">ES</button>
+            <button class="lang-switch__btn" data-lang="de" aria-label="Switch to German" aria-pressed="false">DE</button>
+            <button class="lang-switch__btn" data-lang="zh" aria-label="Switch to Chinese" aria-pressed="false">ZH</button>
         </div>
         <a href="/cdn-cgi/l/email-protection#f199949d9d9eb1909d8790839e9690df929e9c" class="header__cta" data-i18n="header_cta">Let's talk &rarr;</a>
-        <div class="hamburger" id="hamburger" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
             <span></span><span></span><span></span>
-        </div>
+        </button>
     </div>
 </header>
 
 <!-- Mobile nav overlay -->
-<div class="mobile-nav" id="mobileNav">
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
     <div class="lang-switch" id="langSwitchMobile">
-        <button class="lang-switch__btn active" data-lang="en">EN</button>
-        <button class="lang-switch__btn" data-lang="es">ES</button>
-        <button class="lang-switch__btn" data-lang="de">DE</button>
-        <button class="lang-switch__btn" data-lang="zh">ZH</button>
+        <button class="lang-switch__btn active" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+        <button class="lang-switch__btn" data-lang="es" aria-label="Switch to Spanish" aria-pressed="false">ES</button>
+        <button class="lang-switch__btn" data-lang="de" aria-label="Switch to German" aria-pressed="false">DE</button>
+        <button class="lang-switch__btn" data-lang="zh" aria-label="Switch to Chinese" aria-pressed="false">ZH</button>
     </div>
     <a href="#about" onclick="closeMobileNav()" data-i18n="nav_about">About</a>
     <a href="#products" onclick="closeMobileNav()" data-i18n="nav_products">Products</a>
@@ -1414,11 +1443,12 @@ body:hover .cursor-glow { opacity: 1; }
     <a href="#portfolio" onclick="closeMobileNav()" data-i18n="nav_portfolio">Portfolio</a>
     <a href="#testimonials" onclick="closeMobileNav()" data-i18n="nav_testimonials">Testimonials</a>
     <a href="/cdn-cgi/l/email-protection#8ae2efe6e6e5caebe6fcebf8e5edeba4e9e5e7" class="btn btn--primary" onclick="closeMobileNav()" data-i18n="nav_cta">Let's talk</a>
-</div>
+</nav>
 
 <!-- ============================================
      HERO
      ============================================ -->
+<main id="main-content">
 <section class="hero" id="hero">
     <div class="container">
         <picture>
@@ -1426,7 +1456,7 @@ body:hover .cursor-glow { opacity: 1; }
             <img src="alvaro.jpg" alt="Álvaro García" class="hero__avatar" fetchpriority="high" loading="eager">
         </picture>
         <div class="hero__badge">
-            <span class="pulse"></span>
+            <span class="pulse" aria-hidden="true"></span>
             <span data-i18n="hero_badge">Available for projects &mdash; remote worldwide</span>
         </div>
         <h1 data-i18n="hero_h1">I build things<br>that <span class="gradient-text">teach people.</span></h1>
@@ -1436,8 +1466,8 @@ body:hover .cursor-glow { opacity: 1; }
             <a href="https://www.linkedin.com/in/alvarogarciabarbon" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn</a>
         </div>
     </div>
-    <div class="hero__scroll">
-        <span data-i18n="hero_scroll">scroll</span>
+    <div class="hero__scroll" aria-hidden="true">
+        <span>scroll</span>
         <div class="arrow"></div>
     </div>
 </section>
@@ -1914,6 +1944,8 @@ body:hover .cursor-glow { opacity: 1; }
     </div>
 </section>
 
+</main>
+
 <!-- ============================================
      FOOTER
      ============================================ -->
@@ -1950,11 +1982,17 @@ const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 
 hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
 });
 
 function closeMobileNav() {
     mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileNav.setAttribute('aria-hidden', 'true');
 }
 
 // ============================================
@@ -2380,7 +2418,9 @@ function setLanguage(lang) {
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     // Update active button
     document.querySelectorAll('.lang-switch__btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        const isActive = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     // Persist choice
     localStorage.setItem('lang', lang);
