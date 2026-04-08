@@ -1201,6 +1201,99 @@ section {
 }
 
 /* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form {
+    max-width: 560px;
+    margin: 3rem auto 0;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form__group {
+    margin-bottom: 1.25rem;
+}
+
+.contact-form__group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+}
+
+.contact-form__group input,
+.contact-form__group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.contact-form__group input:focus,
+.contact-form__group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.contact-form__group input::placeholder,
+.contact-form__group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.contact-form__group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* Honeypot — hidden from real users */
+.contact-form__honeypot {
+    display: none;
+}
+
+.contact-form__submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.contact-form__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.contact-form__msg {
+    margin-top: 1rem;
+    padding: 0.8rem 1.1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: none;
+}
+
+.contact-form__msg--success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--green);
+}
+
+.contact-form__msg--error {
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: var(--rose);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
@@ -1941,6 +2034,39 @@ body:hover .cursor-glow { opacity: 1; }
             <a href="/cdn-cgi/l/email-protection#48202d2424270829243e293a272f29662b2725" class="btn btn--primary" data-i18n="cta_btn">Start a conversation &rarr;</a>
             <a href="https://www.linkedin.com/in/alvarogarciabarbon" target="_blank" rel="noopener" class="btn btn--secondary">LinkedIn</a>
         </div>
+
+        <!-- Contact form — replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+        <form
+            class="contact-form reveal reveal-delay-3"
+            id="contactForm"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            novalidate
+        >
+            <div class="contact-form__group">
+                <label for="cf-name">Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="contact-form__group">
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="contact-form__group">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <!-- Honeypot spam protection -->
+            <div class="contact-form__honeypot" aria-hidden="true">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn--primary contact-form__submit">Send message &rarr;</button>
+            <div class="contact-form__msg contact-form__msg--success" id="cfSuccess" role="status">
+                ✓ Message sent! I'll get back to you shortly.
+            </div>
+            <div class="contact-form__msg contact-form__msg--error" id="cfError" role="alert">
+                ✗ Something went wrong. Please try again or email me directly.
+            </div>
+        </form>
     </div>
 </section>
 
@@ -2435,6 +2561,60 @@ document.querySelectorAll('.lang-switch__btn').forEach(btn => {
 const savedLang = localStorage.getItem('lang');
 if (savedLang && savedLang !== 'en') {
     setLanguage(savedLang);
+}
+
+// ============================================
+// CONTACT FORM
+// ============================================
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('[type="submit"]');
+        const successMsg = document.getElementById('cfSuccess');
+        const errorMsg = document.getElementById('cfError');
+
+        // Basic client-side validation
+        const name = contactForm.querySelector('#cf-name').value.trim();
+        const email = contactForm.querySelector('#cf-email').value.trim();
+        const message = contactForm.querySelector('#cf-message').value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !email || !message || !emailPattern.test(email)) {
+            errorMsg.textContent = '✗ Please fill in all fields with a valid email address.';
+            errorMsg.style.display = 'block';
+            successMsg.style.display = 'none';
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        try {
+            const res = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' }
+            });
+            if (res.ok) {
+                successMsg.style.display = 'block';
+                contactForm.reset();
+                submitBtn.textContent = 'Send message →';
+            } else {
+                throw new Error('Server error');
+            }
+        } catch {
+            errorMsg.textContent = '✗ Something went wrong. Please try again or email me directly.';
+            errorMsg.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            if (submitBtn.textContent === 'Sending…') {
+                submitBtn.textContent = 'Send message →';
+            }
+        }
+    });
 }
 </script>
 
