@@ -53,7 +53,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
     <style>
 /* ============================================
@@ -1420,7 +1421,10 @@ body:hover .cursor-glow { opacity: 1; }
      ============================================ -->
 <section class="hero" id="hero">
     <div class="container">
-        <img src="alvaro.jpg" alt="Álvaro García" class="hero__avatar">
+        <picture>
+            <source srcset="alvaro.webp" type="image/webp">
+            <img src="alvaro.jpg" alt="Álvaro García" class="hero__avatar" fetchpriority="high" loading="eager">
+        </picture>
         <div class="hero__badge">
             <span class="pulse"></span>
             <span data-i18n="hero_badge">Available for projects &mdash; remote worldwide</span>
@@ -1445,11 +1449,11 @@ body:hover .cursor-glow { opacity: 1; }
     <div class="container">
         <p class="marquee-label" data-i18n="marquee_label">Trusted by teams at</p>
         <div class="marquee-logos">
-            <img src="frontiers.png" alt="Frontiers Media">
-            <img src="amazon-logo.png" alt="Amazon">
-            <img src="nintendo.png" alt="Nintendo of Europe">
-            <img src="metrohm.jpg" alt="Metrohm DropSens">
-            <img src="utrax.png" alt="U-TRAX">
+            <picture><source srcset="frontiers.webp" type="image/webp"><img src="frontiers.png" alt="Frontiers Media" loading="lazy"></picture>
+            <picture><source srcset="amazon-logo.webp" type="image/webp"><img src="amazon-logo.png" alt="Amazon" loading="lazy"></picture>
+            <picture><source srcset="nintendo.webp" type="image/webp"><img src="nintendo.png" alt="Nintendo of Europe" loading="lazy"></picture>
+            <picture><source srcset="metrohm.webp" type="image/webp"><img src="metrohm.jpg" alt="Metrohm DropSens" loading="lazy"></picture>
+            <img src="utrax.png" alt="U-TRAX" loading="lazy">
         </div>
     </div>
 </div>
@@ -1630,7 +1634,7 @@ body:hover .cursor-glow { opacity: 1; }
         <div class="portfolio__grid stagger-children">
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="confluence.jpg" alt="Confluence Information Architecture" class="portfolio-card__img">
+                    <picture><source srcset="confluence.webp" type="image/webp"><img src="confluence.jpg" alt="Confluence Information Architecture" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf1_cat">Technical Writing</div>
@@ -1640,7 +1644,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="teams.png" alt="Microsoft Teams Philosophy" class="portfolio-card__img">
+                    <picture><source srcset="teams.webp" type="image/webp"><img src="teams.png" alt="Microsoft Teams Philosophy" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf2_cat">Technical Writing</div>
@@ -1650,7 +1654,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="gpt.jpg" alt="FrontonGPT Training" class="portfolio-card__img">
+                    <picture><source srcset="gpt.webp" type="image/webp"><img src="gpt.jpg" alt="FrontonGPT Training" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf3_cat">AI Training</div>
@@ -1660,7 +1664,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="zelda.jpg" alt="The Legend of Zelda" class="portfolio-card__img">
+                    <picture><source srcset="zelda.webp" type="image/webp"><img src="zelda.jpg" alt="The Legend of Zelda" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf4_cat">Localization</div>
@@ -1670,7 +1674,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="amazon.png" alt="Amazon Seller Central" class="portfolio-card__img">
+                    <picture><source srcset="amazon.webp" type="image/webp"><img src="amazon.png" alt="Amazon Seller Central" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf5_cat">UX Writing</div>
@@ -1680,7 +1684,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="programa-fluidez.png" alt="Programa Fluidez" class="portfolio-card__img">
+                    <picture><source srcset="programa-fluidez.webp" type="image/webp"><img src="programa-fluidez.png" alt="Programa Fluidez" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf6_cat">Product / Training</div>
@@ -1690,7 +1694,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="sales.png" alt="Email Campaigns" class="portfolio-card__img">
+                    <img src="sales.png" alt="Email Campaigns" class="portfolio-card__img" loading="lazy">
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf7_cat">Copywriting</div>
@@ -1700,7 +1704,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="omnis.jpg" alt="Metrohm Omnis" class="portfolio-card__img">
+                    <picture><source srcset="omnis.webp" type="image/webp"><img src="omnis.jpg" alt="Metrohm Omnis" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf8_cat">UX Writing</div>
@@ -1710,7 +1714,7 @@ body:hover .cursor-glow { opacity: 1; }
             </div>
             <div class="portfolio-card">
                 <div class="portfolio-card__img-wrap">
-                    <img src="dead-island.jpg" alt="Dead Island" class="portfolio-card__img">
+                    <picture><source srcset="dead-island.webp" type="image/webp"><img src="dead-island.jpg" alt="Dead Island" class="portfolio-card__img" loading="lazy"></picture>
                 </div>
                 <div class="portfolio-card__body">
                     <div class="portfolio-card__category" data-i18n="pf9_cat">QA Testing</div>
