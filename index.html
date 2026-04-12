@@ -1657,20 +1657,20 @@ body:hover .cursor-glow { opacity: 1; }
             <div class="product-card reveal">
                 <div class="product-card__emoji">&#x2694;&#xFE0F;</div>
                 <div class="product-card__title" data-i18n="hanzi_title">Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;</div>
-                <p class="product-card__desc" data-i18n="hanzi_desc">A full-stack Chinese learning game covering HSK 1&ndash;3 with 2,449 vocabulary entries. Four game modes (Journey, Visions, Forge, Library) with SM-2 spaced repetition tracking recall, recognition, and listening independently. 10+ drill types, native audio, grammar in context, and a samurai combat mechanic that makes studying addictive.</p>
+                <p class="product-card__desc" data-i18n="hanzi_desc">A Chinese learning web app and installable PWA built around HSK 1&ndash;3 vocabulary, native audio, sentence practice, and samurai-flavored progression. It combines multiple drill formats with spaced repetition that tracks recall, recognition, and listening separately, turning daily study into something more game-like and far less brittle than flashcards alone.</p>
                 <div class="product-card__tags">
                     <span class="tag">React</span>
                     <span class="tag">Firebase</span>
                     <span class="tag">Claude API</span>
                     <span class="tag">PWA</span>
-                    <span class="tag">Google Play</span>
+                    <span class="tag">Native audio</span>
                     <span class="tag">SM-2 SRS</span>
                 </div>
                 <a href="https://chinese.alvaroga.com" target="_blank" rel="noopener" class="product-card__link">
                     <span data-i18n="hanzi_web">Play on web</span> <span class="arrow">&rarr;</span>
                 </a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <span class="product-card__link" style="opacity:0.5;cursor:default" data-i18n="hanzi_android">Soon on Android</span>
+                <span class="product-card__link" style="opacity:0.5;cursor:default" data-i18n="hanzi_android">Installable on mobile</span>
             </div>
             <div class="product-card reveal reveal-delay-2">
                 <div class="product-card__emoji">📖</div>
@@ -1684,6 +1684,26 @@ body:hover .cursor-glow { opacity: 1; }
                 <a href="https://german.alvaroga.com" target="_blank" rel="noopener" class="product-card__link">
                     <span data-i18n="german_link">Explore prototype</span> <span class="arrow">&rarr;</span>
                 </a>
+            </div>
+            <div class="product-card reveal">
+                <div class="product-card__emoji">🧠</div>
+                <div class="product-card__title" data-i18n="swarm_title">SWARM</div>
+                <p class="product-card__desc" data-i18n="swarm_desc">A multi-agent orchestration prototype that turns a natural-language goal into a structured AI company with roles, sequencing, review loops, and deliverables. I built it to explore how teams of specialized agents can collaborate more like an editorial room than a single chatbot.</p>
+                <div class="product-card__tags">
+                    <span class="tag">AI agents</span>
+                    <span class="tag">Orchestration</span>
+                    <span class="tag">Prompt systems</span>
+                </div>
+            </div>
+            <div class="product-card reveal reveal-delay-2">
+                <div class="product-card__emoji">🎓</div>
+                <div class="product-card__title" data-i18n="lando_title">LanDo</div>
+                <p class="product-card__desc" data-i18n="lando_desc">An L&amp;D-focused concept for turning learning goals into clearer training flows, enablement materials, and guided practice. It sits at the intersection of instructional design, AI assistance, and practical workplace education.</p>
+                <div class="product-card__tags">
+                    <span class="tag">L&amp;D</span>
+                    <span class="tag">Enablement</span>
+                    <span class="tag">AI workflow</span>
+                </div>
             </div>
         </div>
     </div>
@@ -2227,12 +2247,16 @@ en: {
     products_title: "Products &amp; Prototypes",
     products_sub: "Where linguistics, data modeling, and software meet. I don't just document tech &mdash; I ship it.",
     hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
-    hanzi_desc: "A full-stack Chinese learning game covering HSK 1&ndash;3 with 2,449 vocabulary entries. Four game modes (Journey, Visions, Forge, Library) with SM-2 spaced repetition tracking recall, recognition, and listening independently. 10+ drill types, native audio, grammar in context, and a samurai combat mechanic that makes studying addictive.",
+    hanzi_desc: "A Chinese learning web app and installable PWA built around HSK 1&ndash;3 vocabulary, native audio, sentence practice, and samurai-flavored progression. It combines multiple drill formats with spaced repetition that tracks recall, recognition, and listening separately, turning daily study into something more game-like and far less brittle than flashcards alone.",
     hanzi_web: "Play on web",
-    hanzi_android: "Soon on Android",
+    hanzi_android: "Installable on mobile",
     german_title: "German Learning Prototype",
     german_desc: "An experimental platform for learning German through natural, intuitive methods. Early-stage prototype exploring how spaced repetition and contextual drilling can be applied to German grammar &mdash; one of the hardest parts for any learner. Same philosophy: every word from every angle.",
     german_link: "Explore prototype",
+    swarm_title: "SWARM",
+    swarm_desc: "A multi-agent orchestration prototype that turns a natural-language goal into a structured AI company with roles, sequencing, review loops, and deliverables. I built it to explore how teams of specialized agents can collaborate more like an editorial room than a single chatbot.",
+    lando_title: "LanDo",
+    lando_desc: "An L&amp;D-focused concept for turning learning goals into clearer training flows, enablement materials, and guided practice. It sits at the intersection of instructional design, AI assistance, and practical workplace education.",
     services_title: "What I Can Do For You",
     services_sub: "From documentation to AI workshops &mdash; I help teams communicate clearly and ship faster.",
     svc1_t: "AI Training &amp; Workshops", svc1_d: "Trained 2,000+ people on prompt engineering, LLM workflows, and AI agents. I make your entire org AI-literate.",
@@ -2312,12 +2336,16 @@ es: {
     products_title: "Productos y prototipos",
     products_sub: "Donde la lingüística, el modelado de datos y el software se encuentran. No solo documento tecnología &mdash; la construyo.",
     hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
-    hanzi_desc: "Un juego completo para aprender chino que cubre HSK 1&ndash;3 con 2.449 entradas de vocabulario. Cuatro modos de juego (Journey, Visions, Forge, Library) con repetición espaciada SM-2 que rastrea recuerdo, reconocimiento y escucha de forma independiente. Más de 10 tipos de ejercicios, audio nativo, gramática en contexto y una mecánica de combate samurái que hace el estudio adictivo.",
+    hanzi_desc: "Una app web y PWA instalable para aprender chino, centrada en vocabulario HSK 1&ndash;3, audio nativo, práctica con frases y progresión con estética samurái. Combina varios formatos de ejercicio con repetición espaciada que rastrea por separado recuerdo, reconocimiento y escucha, haciendo que el estudio diario se parezca más a un juego y menos a unas flashcards frágiles.",
     hanzi_web: "Jugar en web",
-    hanzi_android: "Próximamente en Android",
+    hanzi_android: "Instalable en móvil",
     german_title: "Prototipo de alemán",
     german_desc: "Una plataforma experimental para aprender alemán mediante métodos naturales e intuitivos. Prototipo en fase inicial que explora cómo la repetición espaciada y los ejercicios contextuales pueden aplicarse a la gramática alemana &mdash; una de las partes más difíciles. Misma filosofía: cada palabra desde todos los ángulos.",
     german_link: "Explorar prototipo",
+    swarm_title: "SWARM",
+    swarm_desc: "Un prototipo de orquestación multiagente que convierte un objetivo en lenguaje natural en una empresa de IA estructurada, con roles, secuenciación, bucles de revisión y entregables. Lo construí para explorar cómo equipos de agentes especializados pueden colaborar más como una redacción que como un chatbot único.",
+    lando_title: "LanDo",
+    lando_desc: "Un concepto centrado en L&amp;D para convertir objetivos de aprendizaje en flujos de formación más claros, materiales de enablement y práctica guiada. Se sitúa en la intersección entre diseño instruccional, asistencia con IA y educación práctica en el trabajo.",
     services_title: "Qué puedo hacer por ti",
     services_sub: "De documentación a talleres de IA &mdash; ayudo a equipos a comunicarse mejor y entregar más rápido.",
     svc1_t: "Formación en IA y talleres", svc1_d: "Formé a más de 2.000 personas en prompt engineering, flujos con LLMs y agentes IA. Hago que toda tu organización domine la IA.",
@@ -2397,12 +2425,16 @@ de: {
     products_title: "Produkte &amp; Prototypen",
     products_sub: "Wo Linguistik, Datenmodellierung und Software zusammentreffen. Ich dokumentiere Technik nicht nur &mdash; ich baue sie.",
     hanzi_title: "Hanzi Samurai &#x6F22;&#x5B57;&#x4FE0;",
-    hanzi_desc: "Ein Full-Stack-Lernspiel für Chinesisch, das HSK 1&ndash;3 mit 2.449 Vokabeleinträgen abdeckt. Vier Spielmodi (Journey, Visions, Forge, Library) mit SM-2 Spaced Repetition, die Recall, Erkennung und Hörverständnis unabhängig tracken. 10+ Übungstypen, Muttersprachler-Audio, Grammatik im Kontext und eine Samurai-Kampfmechanik, die süchtig macht.",
+    hanzi_desc: "Eine chinesische Lern-Web-App und installierbare PWA rund um HSK 1&ndash;3-Vokabular, Muttersprachler-Audio, Satzpraxis und eine samurai-inspirierte Progression. Sie kombiniert mehrere Übungsformate mit Spaced Repetition, die Abruf, Erkennung und Hörverständnis getrennt verfolgt, sodass sich tägliches Lernen eher wie ein Spiel und weniger wie fragile Karteikarten anfühlt.",
     hanzi_web: "Im Web spielen",
-    hanzi_android: "Bald auf Android",
+    hanzi_android: "Auf dem Handy installierbar",
     german_title: "Deutsch-Lernprototyp",
     german_desc: "Eine experimentelle Plattform zum Deutschlernen durch natürliche, intuitive Methoden. Frühphasen-Prototyp, der erforscht, wie Spaced Repetition und kontextuelle Übungen auf die deutsche Grammatik angewandt werden können &mdash; einer der schwierigsten Teile. Gleiche Philosophie: jedes Wort aus jedem Blickwinkel.",
     german_link: "Prototyp erkunden",
+    swarm_title: "SWARM",
+    swarm_desc: "Ein Multi-Agenten-Orchestrierungsprototyp, der ein natürlich formuliertes Ziel in ein strukturiertes KI-Unternehmen mit Rollen, Sequenzierung, Review-Schleifen und Deliverables verwandelt. Ich habe ihn gebaut, um zu erforschen, wie spezialisierte Agententeams eher wie eine Redaktion als wie ein einzelner Chatbot zusammenarbeiten können.",
+    lando_title: "LanDo",
+    lando_desc: "Ein L&amp;D-orientiertes Konzept, das Lernziele in klarere Trainingsabläufe, Enablement-Materialien und geführte Praxis übersetzt. Es liegt an der Schnittstelle von Instructional Design, KI-Unterstützung und praxisnaher Weiterbildung im Arbeitskontext.",
     services_title: "Was ich für Sie tun kann",
     services_sub: "Von Dokumentation bis KI-Workshops &mdash; ich helfe Teams, klar zu kommunizieren und schneller zu liefern.",
     svc1_t: "KI-Training &amp; Workshops", svc1_d: "Über 2.000 Menschen in Prompt Engineering, LLM-Workflows und KI-Agenten geschult. Ich mache Ihre gesamte Organisation KI-kompetent.",
@@ -2482,12 +2514,16 @@ zh: {
     products_title: "产品与原型",
     products_sub: "语言学、数据建模和软件的交汇点。我不仅记录技术 &mdash; 我发布它。",
     hanzi_title: "汉字侠 &#x6F22;&#x5B57;&#x4FE0;",
-    hanzi_desc: "一款全栈中文学习游戏，涵盖HSK 1&ndash;3，包含2,449个词汇条目。四种游戏模式（旅程、幻象、锻造、图书馆），采用SM-2间隔重复独立追踪回忆、识别和听力。10多种练习类型、母语音频、语境中的语法，以及让学习上瘾的武士战斗机制。",
+    hanzi_desc: "一款可安装的中文学习网页应用与PWA，围绕HSK 1&ndash;3词汇、母语音频、句子练习和武士风格成长体系打造。它将多种练习形式与间隔重复结合，并分别追踪回忆、识别和听力，让日常学习更像游戏，而不只是脆弱的抽认卡。",
     hanzi_web: "网页版",
-    hanzi_android: "即将登陆Android",
+    hanzi_android: "可安装到手机",
     german_title: "德语学习原型",
     german_desc: "一个通过自然、直觉方法学习德语的实验平台。早期原型，探索间隔重复和上下文练习如何应用于德语语法 &mdash; 对任何学习者来说最难的部分之一。同样的理念：从每个角度学习每个词。",
     german_link: "探索原型",
+    swarm_title: "SWARM",
+    swarm_desc: "一个多代理编排原型，可将自然语言目标转化为结构化的AI公司，包含角色分工、执行顺序、审阅循环和交付物。我构建它是为了探索一组专业代理如何像编辑部一样协作，而不是只像一个单独的聊天机器人。",
+    lando_title: "LanDo",
+    lando_desc: "一个面向L&amp;D的概念，用于把学习目标转化为更清晰的培训流程、赋能材料和引导式练习。它位于教学设计、AI辅助与实际职场教育的交汇处。",
     services_title: "我能为你做什么",
     services_sub: "从文档到AI研讨会 &mdash; 我帮助团队清晰沟通、更快交付。",
     svc1_t: "AI培训与研讨会", svc1_d: "培训了2,000多人学习提示工程、LLM工作流和AI代理。我让你的整个组织具备AI素养。",
