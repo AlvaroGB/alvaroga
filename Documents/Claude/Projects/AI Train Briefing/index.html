@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AI Train Briefing — stay useful in the AI era without living in the feed." />
+    <title>AI Train Briefing</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">AI Train Briefing</div>
+        <nav class="nav">
+          <a href="#why-pay">Why pay</a>
+          <a href="#offer">Offer</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="panel hero-main">
+            <div class="eyebrow">Signal for busy professionals</div>
+            <h1>Stay useful in the AI era without living in the feed.</h1>
+            <p class="lead">A sharp briefing for managers, operators, consultants, and office workers who need to know what actually changes at work. We filter the noise, explain what matters, and give one concrete action.</p>
+            <div class="cta-row">
+              <a class="btn primary" id="signupBtn" href="#signup">Join the list</a>
+              <a class="btn secondary" id="paymentBtn" href="#pricing">See paid plan</a>
+              <a class="btn secondary" href="issues/2026-04-17-issue-001.html">Read sample issue</a>
+              <a class="btn secondary" href="polymarket/">Open Polymarket dashboard</a>
+            </div>
+          </div>
+          <aside class="panel hero-side">
+            <div class="stat"><b>1</b><span class="muted">Useful action per issue</span></div>
+            <div class="stat"><b>€19</b><span class="muted">Monthly individual plan</span></div>
+            <div class="stat"><b>0</b><span class="muted">Feed addiction required</span></div>
+            <div class="stat"><b>1</b><span class="muted">Clean digest, not 300 links</span></div>
+          </aside>
+        </section>
+
+        <section id="offer" class="grid-2">
+          <article class="panel card">
+            <div class="pill">Free</div>
+            <h2 class="section-title">Public briefing</h2>
+            <p class="muted">Short, readable, and useful enough to build trust. It shows the kind of judgment the paid version delivers.</p>
+            <ul>
+              <li>What changed this week</li>
+              <li>Why it matters for normal jobs</li>
+              <li>One practical tool or workflow</li>
+              <li>One blunt interpretation</li>
+            </ul>
+          </article>
+          <article class="panel card">
+            <div class="pill">Paid</div>
+            <h2 class="section-title">Deeper weekly digest</h2>
+            <p class="muted">For people who want the useful read, not the endless feed. Email delivery through Buttondown, paid access through Stripe.</p>
+            <ul>
+              <li>Sharper filtering</li>
+              <li>Practical AI workflow notes</li>
+              <li>Team/company version later if needed</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="why-pay" class="panel card">
+          <h2 class="section-title">Why anyone would pay</h2>
+          <div class="grid-2">
+            <div>
+              <p class="muted">They are not paying for AI news. They are paying for relief, judgment, and not looking behind in front of a boss, team, or client.</p>
+            </div>
+            <div>
+              <ul>
+                <li>Save time</li>
+                <li>Remove noise</li>
+                <li>Get one clear action</li>
+                <li>Stay current without doomscrolling</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+          <article class="panel price-card">
+            <div class="pill">Individual</div>
+            <div class="price">€19/mo</div>
+            <p class="muted">Best for single professionals who want the weekly digest.</p>
+            <a class="btn primary full" id="monthlyBtn" href="#signup">Subscribe monthly</a>
+          </article>
+          <article class="panel price-card">
+            <div class="pill">Annual</div>
+            <div class="price">€190/yr</div>
+            <p class="muted">For people who already know they want the full year.</p>
+            <a class="btn secondary full" id="annualBtn" href="#signup">Subscribe annually</a>
+          </article>
+          <article class="panel price-card">
+            <div class="pill">Teams</div>
+            <div class="price">By request</div>
+            <p class="muted">For groups that want a custom version for internal sharing.</p>
+            <a class="btn secondary full" id="teamBtn" href="mailto:hello@example.com?subject=AI%20Train%20Briefing%20team%20version">Ask about teams</a>
+          </article>
+        </section>
+
+        <section id="signup" class="panel card">
+          <h2 class="section-title">Join the list</h2>
+          <p class="muted">Replace the placeholder action in config.js with your Buttondown form URL, then this becomes the live signup path.</p>
+          <form id="newsletterForm" method="post" action="#">
+            <div class="cta-row">
+              <input name="email" type="email" placeholder="you@example.com" required style="padding:14px 16px;border-radius:999px;border:1px solid var(--border);min-width:min(100%,320px);font:inherit;" />
+              <button class="btn primary" type="submit">Get the free briefing</button>
+            </div>
+          </form>
+        </section>
+
+        <section id="faq" class="faq">
+          <article class="panel card">
+            <h3 class="section-title">Is this for beginners?</h3>
+            <p class="muted">Yes. It is for people who need clarity, not jargon.</p>
+          </article>
+          <article class="panel card">
+            <h3 class="section-title">Is this for tech people too?</h3>
+            <p class="muted">Yes. Tech people get a sane filter instead of hype.</p>
+          </article>
+        </section>
+
+        <section class="panel card">
+          <h2 class="section-title">Digest delivery plan</h2>
+          <ul>
+            <li>Public issue on the site</li>
+            <li>Paid version by email via Buttondown</li>
+            <li>Payment via Stripe Payment Links</li>
+            <li>Discovery via LinkedIn and Telegram</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        Built to be small, fast, and easy to run. Cloudflare Pages for hosting, Buttondown for email, Stripe for payment.
+      </footer>
+    </div>
+
+    <script>
+      const cfg = window.BRIEFING_CONFIG || {};
+      const form = document.getElementById('newsletterForm');
+      if (cfg.newsletterAction && cfg.newsletterAction.includes('buttondown')) {
+        form.action = cfg.newsletterAction;
+      }
+      const map = {
+        signupBtn: cfg.newsletterAction,
+        monthlyBtn: cfg.paymentMonthly,
+        annualBtn: cfg.paymentAnnual,
+      };
+      for (const [id, href] of Object.entries(map)) {
+        const el = document.getElementById(id);
+        if (el && href) el.href = href;
+      }
+    </script>
+  </body>
+</html>
