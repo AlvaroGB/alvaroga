@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Atlas</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="app-shell">
+      <header class="hero card">
+        <div>
+          <p class="eyebrow">Math Atlas</p>
+          <h1>Learn math like an adventure.</h1>
+          <p class="lede">
+            Built for ages 7–10, with enough depth to keep growing. Pick a world,
+            solve tiny challenges, and unlock bigger ideas.
+          </p>
+        </div>
+        <div class="hero-mascot" aria-hidden="true">∑</div>
+      </header>
+
+      <section class="stats-row">
+        <div class="stat card">
+          <span class="stat-label">Stars</span>
+          <strong id="starsValue">0</strong>
+        </div>
+        <div class="stat card">
+          <span class="stat-label">Streak</span>
+          <strong id="streakValue">0</strong>
+        </div>
+        <div class="stat card">
+          <span class="stat-label">Mastery</span>
+          <strong id="masteryValue">0%</strong>
+        </div>
+        <div class="stat card">
+          <span class="stat-label">Mode</span>
+          <strong id="modeValue">Mixed review</strong>
+        </div>
+      </section>
+
+      <section class="card main-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Choose a world</p>
+            <h2>Start simple. Go deep when ready.</h2>
+          </div>
+          <div class="actions">
+            <button id="mixedButton" class="button button-secondary">Mixed review</button>
+            <button id="resetButton" class="button button-ghost">Reset progress</button>
+          </div>
+        </div>
+
+        <div id="topicGrid" class="topic-grid"></div>
+      </section>
+
+      <section class="lesson-grid">
+        <article class="card lesson-card">
+          <div class="panel-header compact">
+            <div>
+              <p class="eyebrow">Current lesson</p>
+              <h2 id="lessonTitle">Pick a world to begin</h2>
+            </div>
+            <span id="difficultyBadge" class="badge">Starter</span>
+          </div>
+
+          <p id="lessonPrompt" class="lesson-prompt">
+            Choose a math world above. The app will ask one question at a time.
+          </p>
+
+          <div id="answerGrid" class="answer-grid" aria-live="polite"></div>
+
+          <div class="lesson-footer">
+            <button id="nextButton" class="button button-primary" disabled>Next question</button>
+            <button id="hintButton" class="button button-secondary" disabled>Show hint</button>
+            <button id="speakButton" class="button button-ghost" disabled>Read aloud</button>
+          </div>
+
+          <div id="feedbackBox" class="feedback-box" aria-live="polite"></div>
+        </article>
+
+        <aside class="card side-card">
+          <div>
+            <p class="eyebrow">Why it works</p>
+            <h2>Serious math, kid-friendly steps.</h2>
+          </div>
+
+          <ul class="feature-list">
+            <li>Big buttons and short prompts</li>
+            <li>3 difficulty tiers per topic</li>
+            <li>Adaptive practice from age 7 to 10+</li>
+            <li>Deep-dive notes when mastery grows</li>
+            <li>Saved progress in the browser</li>
+          </ul>
+
+          <div class="deep-dive card-inner">
+            <p class="eyebrow">Deep dive</p>
+            <h3 id="deepDiveTitle">Unlock a topic to see the deeper idea</h3>
+            <p id="deepDiveText">
+              When you’re ready, the app will show the bigger pattern behind the
+              answer, not just the answer itself.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
