@@ -220,8 +220,11 @@ function escapeRegex(text) {
 }
 
 function randomLesson() {
-  const next = Math.floor(Math.random() * priorities.length);
+  const candidates = priorities.map((_, idx) => idx).filter((idx) => idx !== currentIndex);
+  const next = candidates[Math.floor(Math.random() * candidates.length)] ?? 0;
   setLesson(next);
+  els.feedbackBox.textContent = `Lección nueva: ${priorities[next].lesson.title}`;
+  els.feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function attachEvents() {
