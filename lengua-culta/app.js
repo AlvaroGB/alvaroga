@@ -108,6 +108,8 @@ const extraWords = [
   { word: 'empero', note: 'Conector arcaico equivalente a “sin embargo”.', tip: 'Leer sí; abusar, no.' },
 ];
 
+const STORAGE_KEY = 'lengua-culta-progress-v1';
+
 const els = {
   priorityList: document.getElementById('priorityList'),
   lessonTitle: document.getElementById('lessonTitle'),
@@ -122,10 +124,14 @@ const els = {
   applyRewrite: document.getElementById('applyRewrite'),
   showHint: document.getElementById('showHint'),
   nextLesson: document.getElementById('nextLesson'),
+  progressSummary: document.getElementById('progressSummary'),
+  progressDetail: document.getElementById('progressDetail'),
+  progressFill: document.getElementById('progressFill'),
 };
 
 let currentIndex = 0;
 let selectedChoice = null;
+let progress = loadProgress();
 
 function renderPriorityList(activeId = priorities[currentIndex].id) {
   els.priorityList.innerHTML = priorities.map((item, index) => {
@@ -142,6 +148,66 @@ function renderPriorityList(activeId = priorities[currentIndex].id) {
       </div>
     `;
   }).join('');
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {
+      viewedLessons: [],
+      correctAnswers: 0,
+      attempts: 0,
+      rewrites: 0,
+      lastLessonIndex: 0,
+      lastVisitedAt: null,
+    };
+    const parsed = JSON.parse(raw);
+    return {
+      viewedLessons: Array.isArray(parsed.viewedLessons) ? parsed.viewedLessons : [],
+      correctAnswers: Number(parsed.correctAnswers || 0),
+      attempts: Number(parsed.attempts || 0),
+      rewrites: Number(parsed.rewrites || 0),
+      lastLessonIndex: Number.isFinite(parsed.lastLessonIndex) ? parsed.lastLessonIndex : 0,
+      lastVisitedAt: parsed.lastVisitedAt || null,
+    };
+  } catch {
+    return {
+      viewedLessons: [],
+      correctAnswers: 0,
+      attempts: 0,
+      rewrites: 0,
+      lastLessonIndex: 0,
+      lastVisitedAt: null,
+    };
+  }
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  } catch (err) {
+    console.warn('Could not save progress', err);
+  }
+}
+
+function updateProgressUI() {
+  const viewed = new Set(progress.viewedLessons).size;
+  const total = priorities.length;
+  const pct = Math.round((viewed / total) * 100);
+  const accuracy = progress.attempts ? Math.round((progress.correctAnswers / progress.attempts) * 100) : 0;
+  els.progressSummary.textContent = `${viewed}/${total} lecciones vistas`;
+  els.progressDetail.textContent = `${accuracy}% aciertos · ${progress.rewrites} reescrituras · sin login`;
+  els.progressFill.style.width = `${pct}%`;
+}
+
+function markLessonViewed(index) {
+  if (!progress.viewedLessons.includes(index)) {
+    progress.viewedLessons.push(index);
+  }
+  progress.lastLessonIndex = index;
+  progress.lastVisitedAt = new Date().toISOString();
+  saveProgress();
+  updateProgressUI();
 }
 
 function renderWordBank() {
@@ -164,6 +230,7 @@ function setLesson(index, { keepChoice = false } = {}) {
   if (!keepChoice) selectedChoice = null;
   renderPriorityList(item.id);
   renderChoices(item.lesson.quiz);
+  markLessonViewed(currentIndex);
 }
 
 function renderChoices([prompt, ...choices]) {
@@ -179,6 +246,10 @@ function scoreChoice(choice) {
   const item = priorities[currentIndex];
   const good = item.lesson.quiz[1];
   selectedChoice = choice;
+  progress.attempts += 1;
+  if (choice === good) progress.correctAnswers += 1;
+  saveProgress();
+  updateProgressUI();
   renderChoices(item.lesson.quiz);
   const result = choice === good
     ? `Bien. ${good} es la opción más útil aquí porque ${item.lesson.hint.toLowerCase()}`
@@ -208,6 +279,9 @@ function rewriteSentence(text) {
     .replace(/\bmas\b/gi, 'más');
 
   const starter = 'Versión más precisa';
+  progress.rewrites += 1;
+  saveProgress();
+  updateProgressUI();
   const notes = applied.length
     ? `Cambios aplicados: ${applied.join(', ')}.`
     : 'No encontré sustituciones directas, pero puedes subir el verbo o concretar el sustantivo.';
@@ -258,5 +332,6 @@ function attachEvents() {
 renderPriorityList();
 renderWordBank();
 attachEvents();
-setLesson(0);
+updateProgressUI();
+setLesson(progress.lastLessonIndex || 0);
 els.rewriteInput.value = 'La cosa esta muy mal y hay que hacer algo pronto.';
