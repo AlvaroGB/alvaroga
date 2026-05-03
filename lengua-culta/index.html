@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Lengua Culta: una web app para dominar el español con prioridad realista — primero nuevos conceptos, luego precisión, registro, matiz, sinónimos y, al final, arcaísmos."
+    />
+    <title>Lengua Culta</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <main class="shell">
+      <header class="hero card">
+        <div class="hero-copy">
+          <p class="eyebrow">Español de alto rendimiento</p>
+          <h1>Primero nombrar bien el mundo nuevo. Luego afinarlo.</h1>
+          <p class="lede">
+            Lengua Culta es una app para españoles que quieren escribir y hablar con más
+            precisión, más naturalidad y más criterio: empezar por conceptos nuevos y
+            útiles, y solo después subir a sinónimos, matices y palabras históricas.
+          </p>
+          <div class="cta-row">
+            <button class="button button-primary" id="shuffleButton">Dar una lección</button>
+            <button class="button button-secondary" id="rewriteButton">Reescritura express</button>
+            <a class="button button-ghost" href="#mapa">Ver la escalera</a>
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <div class="stat card-inner">
+            <span class="stat-label">Orden</span>
+            <strong>Conceptos → precisión → registro</strong>
+          </div>
+          <div class="stat card-inner">
+            <span class="stat-label">Meta</span>
+            <strong>Expresar mejor, no sonar raro</strong>
+          </div>
+          <div class="stat card-inner">
+            <span class="stat-label">Método</span>
+            <strong>Lectura, reescritura y elección de palabra</strong>
+          </div>
+        </aside>
+      </header>
+
+      <section class="card section-block" id="mapa">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Escalera de aprendizaje</p>
+            <h2>De lo más útil a lo más ornamental.</h2>
+          </div>
+          <p class="section-note">
+            La app no premia la palabra rara por sí misma. Premia la palabra que aclara,
+            sitúa o mejora una idea.
+          </p>
+        </div>
+        <div id="priorityList" class="priority-list"></div>
+      </section>
+
+      <section class="grid-2">
+        <article class="card drill-card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Lección de hoy</p>
+              <h2 id="lessonTitle">Cargando...</h2>
+            </div>
+            <span class="badge" id="lessonBadge">Nuevo concepto</span>
+          </div>
+
+          <p id="lessonBody" class="lesson-body"></p>
+
+          <div class="choice-row" id="choiceRow" aria-live="polite"></div>
+
+          <div class="input-block">
+            <label for="rewriteInput">Reescribe una frase</label>
+            <textarea
+              id="rewriteInput"
+              rows="4"
+              placeholder="Ej.: La cosa esta muy mal y hay que hacer algo pronto."
+            ></textarea>
+          </div>
+
+          <div class="cta-row">
+            <button class="button button-primary" id="applyRewrite">Mejorar frase</button>
+            <button class="button button-secondary" id="showHint">Mostrar pista</button>
+            <button class="button button-ghost" id="nextLesson">Siguiente</button>
+          </div>
+
+          <div class="feedback card-inner" id="feedbackBox" aria-live="polite"></div>
+        </article>
+
+        <aside class="card side-card">
+          <div>
+            <p class="eyebrow">Banco de palabras</p>
+            <h2>Palabras que vale la pena dominar primero.</h2>
+          </div>
+          <div id="wordBank" class="word-bank"></div>
+          <div class="card-inner note-box">
+            <strong>Regla de oro</strong>
+            <p>
+              Si una palabra es elegante pero no te ayuda a pensar mejor, va al final.
+              Si nombra algo nuevo, preciso o necesario, va al principio.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="card section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Qué entrena la app</p>
+            <h2>Un español más fino, no más recargado.</h2>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature card-inner">
+            <strong>Nuevos conceptos</strong>
+            <p>Nombrar con claridad realidades recientes, técnicas y sociales.</p>
+          </div>
+          <div class="feature card-inner">
+            <strong>Precisión</strong>
+            <p>Elegir verbos y sustantivos que delimiten la idea con menos ruido.</p>
+          </div>
+          <div class="feature card-inner">
+            <strong>Registro</strong>
+            <p>Escribir con sobriedad, naturalidad y tono adecuado al contexto.</p>
+          </div>
+          <div class="feature card-inner">
+            <strong>Sinónimos y arcaísmos</strong>
+            <p>Aprenderlos al final, como capa estilística, no como base del idioma.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
