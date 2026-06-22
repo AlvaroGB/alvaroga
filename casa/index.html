@@ -23,16 +23,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sa
 .login-box input:focus { border-color:var(--accent); }
 .login-box button { width:100%; margin-top:14px; padding:12px; background:var(--accent); color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:opacity .15s; }
 .login-box button:hover { opacity:.85; }
-.error-msg { color:var(--danger); font-size:12px; margin-top:10px; min-height:18px; }
+.error-msg { color:var(--danger); font-size:13px; margin-top:10px; min-height:18px; }
 
 #app-screen { display:none; }
 #app-screen.active { display:flex; }
 
 nav { width:260px; background:var(--surface); border-right:1px solid var(--border); padding:20px 0; position:fixed; top:0; left:0; bottom:0; overflow-y:auto; z-index:10; }
 nav .logo { padding:0 20px 20px; border-bottom:1px solid var(--border); margin-bottom:10px; }
-nav .logo h1 { font-size:16px; color:var(--accent); }
-nav .logo p { font-size:10px; color:var(--text2); margin-top:4px; }
-nav a { display:flex; align-items:center; gap:8px; padding:7px 20px; color:var(--text2); text-decoration:none; font-size:11px; transition:all .15s; border-left:3px solid transparent; }
+nav .logo h1 { font-size:17px; color:var(--accent); }
+nav .logo p { font-size:11px; color:var(--text2); margin-top:4px; }
+nav a { display:flex; align-items:center; gap:8px; padding:8px 20px; color:var(--text2); text-decoration:none; font-size:13px; transition:all .15s; border-left:3px solid transparent; }
 nav a:hover { color:var(--text); background:var(--surface2); }
 nav a.active { color:var(--accent); background:var(--surface2); border-left-color:var(--accent); }
 nav a .pill { font-size:9px; padding:1px 5px; border-radius:3px; margin-left:auto; background:#3a1b1b; color:var(--danger); }
@@ -42,28 +42,28 @@ main { flex:1; padding:28px 36px; max-width:1100px; margin-left:260px; }
 section { display:none; animation: fade .3s; }
 section.active { display:block; }
 @keyframes fade { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-h2 { font-size:20px; margin-bottom:6px; }
-h3 { font-size:14px; margin:22px 0 8px; border-bottom:1px solid var(--border); padding-bottom:5px; color:var(--text); }
-h4 { font-size:12px; margin:14px 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:.5px; }
-.subtitle { color:var(--text2); font-size:11px; margin-bottom:20px; }
-.card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:10px; font-size:12px; }
+h2 { font-size:24px; margin-bottom:6px; }
+h3 { font-size:16px; margin:22px 0 8px; border-bottom:1px solid var(--border); padding-bottom:5px; color:var(--text); }
+h4 { font-size:14px; margin:14px 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:.5px; }
+.subtitle { color:var(--text2); font-size:13px; margin-bottom:20px; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px; font-size:14px; line-height:1.6; }
 .card-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; font-weight:600; }
-.badge { padding:2px 7px; border-radius:4px; font-size:9px; font-weight:600; }
+.badge { padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
 .bg { background:#1b3a1b; color:var(--accent2); } .br { background:#3a1b1b; color:var(--danger); }
 .by { background:#3a351b; color:var(--warning); } .bb { background:#1b2d3a; color:var(--accent); }
 .bp { background:#2d1b3a; color:var(--purple); } .bo { background:#3a281b; color:var(--orange); }
 .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:16px; }
 .stat { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; text-align:center; }
-.stat .num { font-size:24px; font-weight:700; }
-.stat .label { font-size:9px; color:var(--text2); margin-top:2px; }
+.stat .num { font-size:28px; font-weight:700; }
+.stat .label { font-size:11px; color:var(--text2); margin-top:2px; }
 .stat.r .num { color:var(--danger); } .stat.g .num { color:var(--accent2); }
 .stat.b .num { color:var(--accent); } .stat.y .num { color:var(--warning); }
 .highlight { border-left:4px solid var(--danger); padding-left:12px; }
 .hl-accent { border-left:4px solid var(--accent); padding-left:12px; }
 .hl-green { border-left:4px solid var(--accent2); padding-left:12px; }
 
-.persona { display:inline-flex; align-items:center; gap:5px; padding:4px 9px; background:var(--surface); border:1px solid var(--border); border-radius:14px; margin:2px; font-size:10px; }
-.persona .role { font-size:9px; color:var(--text2); }
+.persona { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin:3px; font-size:13px; }
+.persona .role { font-size:11px; color:var(--text2); }
 
 .timeline { position:relative; padding-left:26px; }
 .timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:2px; background:var(--border); }
@@ -72,57 +72,57 @@ h4 { font-size:12px; margin:14px 0 6px; color:var(--accent); text-transform:uppe
 .tl-item.key::before { border-color:var(--danger); background:var(--danger); }
 .tl-item.warn::before { border-color:var(--warning); background:var(--warning); }
 .tl-item.info::before { border-color:var(--accent); background:var(--accent); }
-.tl-summary { cursor:pointer; padding:8px 12px; background:var(--surface); border:1px solid var(--border); border-radius:5px; display:flex; align-items:center; gap:8px; font-size:11px; }
+.tl-summary { cursor:pointer; padding:10px 14px; background:var(--surface); border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; gap:10px; font-size:13px; }
 .tl-summary:hover { background:var(--surface2); }
-.tl-date { font-size:9px; color:var(--text2); white-space:nowrap; min-width:72px; }
+.tl-date { font-size:11px; color:var(--text2); white-space:nowrap; min-width:80px; }
 .tl-title { flex:1; }
-.tl-arrow { color:var(--text2); transition:transform .2s; font-size:9px; }
+.tl-arrow { color:var(--text2); transition:transform .2s; font-size:11px; }
 .tl-item.open .tl-arrow { transform:rotate(180deg); }
-.tl-content { display:none; padding:8px 12px; background:var(--surface2); border:1px solid var(--border); border-top:none; border-radius:0 0 5px 5px; font-size:11px; color:var(--text2); }
+.tl-content { display:none; padding:10px 14px; background:var(--surface2); border:1px solid var(--border); border-top:none; border-radius:0 0 6px 6px; font-size:13px; color:var(--text2); }
 .tl-item.open .tl-content { display:block; }
 
-.juris-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.juris-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px; font-size:11px; }
-.juris-card .ref { font-size:10px; color:var(--accent); margin-bottom:3px; font-weight:600; }
-.juris-card .facts { color:var(--text2); margin-bottom:5px; }
+.juris-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.juris-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:12px; font-size:13px; }
+.juris-card .ref { font-size:13px; color:var(--accent); margin-bottom:4px; font-weight:600; }
+.juris-card .facts { color:var(--text2); margin-bottom:6px; }
 .juris-card .result { color:var(--accent2); font-weight:600; }
-.juris-card .match { font-size:9px; color:var(--danger); margin-top:3px; }
+.juris-card .match { font-size:11px; color:var(--danger); margin-top:4px; }
 .juris-card.adverse { border-left:3px solid var(--danger); }
 .juris-card.adverse .result { color:var(--danger); }
 
-.danger-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.danger-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px; font-size:11px; }
-.danger-card .num { font-size:18px; font-weight:700; color:var(--danger); }
-.danger-card h4 { font-size:12px; margin:6px 0 4px; color:var(--text); text-transform:none; letter-spacing:0; }
-.danger-card .impact { font-size:10px; color:var(--text2); }
-.danger-card .counter { font-size:10px; color:var(--accent2); margin-top:4px; }
+.danger-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.danger-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:12px; font-size:13px; }
+.danger-card .num { font-size:22px; font-weight:700; color:var(--danger); }
+.danger-card h4 { font-size:14px; margin:6px 0 4px; color:var(--text); text-transform:none; letter-spacing:0; }
+.danger-card .impact { font-size:13px; color:var(--text2); }
+.danger-card .counter { font-size:11px; color:var(--accent2); margin-top:6px; }
 
-.arg-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.arg-card { border-radius:6px; padding:10px; font-size:11px; }
+.arg-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.arg-card { border-radius:6px; padding:12px; font-size:13px; }
 .arg-card.g { background:#1b2d1b; border:1px solid #2d4a2d; }
 .arg-card.r { background:#2d1b1b; border:1px solid #4a2d2d; }
-.arg-card h4 { margin:0 0 5px; font-size:12px; text-transform:none; letter-spacing:0; }
+.arg-card h4 { margin:0 0 6px; font-size:14px; text-transform:none; letter-spacing:0; }
 .arg-card.g h4 { color:var(--accent2); } .arg-card.r h4 { color:var(--danger); }
-.arg-card li { margin-bottom:3px; color:var(--text2); font-size:11px; }
+.arg-card li { margin-bottom:4px; color:var(--text2); font-size:13px; }
 
-.phases { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
-.phase-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; font-size:11px; }
-.phase-card h4 { font-size:13px; margin-bottom:8px; text-transform:none; letter-spacing:0; }
-.phase-card .tag { font-size:9px; padding:1px 6px; border-radius:3px; }
-.phase-card li { margin-bottom:4px; color:var(--text2); font-size:10px; }
+.phases { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.phase-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:14px; font-size:13px; }
+.phase-card h4 { font-size:15px; margin-bottom:8px; text-transform:none; letter-spacing:0; }
+.phase-card .tag { font-size:11px; padding:1px 6px; border-radius:3px; }
+.phase-card li { margin-bottom:4px; color:var(--text2); font-size:13px; }
 .phase-card.f0 h4 { color:var(--danger); } .phase-card.f0 { border-top:3px solid var(--danger); }
 .phase-card.f1 h4 { color:var(--warning); } .phase-card.f1 { border-top:3px solid var(--warning); }
 .phase-card.f2 h4 { color:var(--accent); } .phase-card.f2 { border-top:3px solid var(--accent); }
 
-.demand-block { background:var(--surface); border:1px solid var(--accent); border-radius:8px; padding:14px; font-family:'SF Mono',Monaco,monospace; font-size:10px; line-height:1.7; white-space:pre-wrap; color:var(--text2); }
+.demand-block { background:var(--surface); border:1px solid var(--accent); border-radius:8px; padding:16px; font-family:'SF Mono',Monaco,monospace; font-size:13px; line-height:1.8; white-space:pre-wrap; color:var(--text2); }
 .demand-block .kw { color:var(--accent); } .demand-block .amt { color:var(--accent2); } .demand-block .law { color:var(--purple); }
 .demand-block .danger { color:var(--danger); }
 
-.quote { border-left:3px solid var(--warning); padding:8px 12px; margin:8px 0; font-style:italic; color:var(--text2); font-size:11px; background:var(--surface2); border-radius:0 4px 4px 0; }
+.quote { border-left:3px solid var(--warning); padding:10px 14px; margin:10px 0; font-style:italic; color:var(--text2); font-size:13px; background:var(--surface2); border-radius:0 4px 4px 0; }
 
-table.full { width:100%; border-collapse:collapse; font-size:11px; }
-table.full th { text-align:left; padding:6px 8px; border-bottom:2px solid var(--border); color:var(--text2); font-size:10px; text-transform:uppercase; }
-table.full td { padding:6px 8px; border-bottom:1px solid var(--border); }
+table.full { width:100%; border-collapse:collapse; font-size:13px; }
+table.full th { text-align:left; padding:8px 10px; border-bottom:2px solid var(--border); color:var(--text2); font-size:11px; text-transform:uppercase; }
+table.full td { padding:8px 10px; border-bottom:1px solid var(--border); }
 table.full tr:hover td { background:var(--surface2); }
 
 /* ── MOBILE HAMBURGER MENU ── */
@@ -141,7 +141,7 @@ table.full tr:hover td { background:var(--surface2); }
   }
   nav.open { left:0; }
   nav .logo { display:block; }
-  nav a { padding:8px 20px; font-size:12px; border-left:3px solid transparent; border-bottom:none; white-space:normal; }
+  nav a { padding:9px 20px; font-size:14px; border-left:3px solid transparent; border-bottom:none; white-space:normal; }
   nav a.active { border-left-color:var(--accent); border-bottom:none; }
   nav .nav-sep { margin:6px 0; }
   main { margin-left:0; padding:56px 14px 14px; }
@@ -250,7 +250,7 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>1. Defectos urbanísticos graves</h4>
 <div class="card">
-  <ul style="font-size:11px;color:var(--text2);padding-left:16px;">
+  <ul style="font-size:13px;color:var(--text2);padding-left:16px;">
     <li style="margin-bottom:3px"><strong>Suelo Urbanizable</strong> (no Urbano). PGOU Siero, UH 10/UZ/U. Inf. municipal exp. 309/2026.</li>
     <li style="margin-bottom:3px"><strong>3 de 4 edificaciones sin licencia</strong> (E2, E3, E4). Fuera de ordenación (art. 188.2 PGOU + 107 TROTU).</li>
     <li style="margin-bottom:3px"><strong>E1: discrepancia de 53m²</strong> entre licencia (249,68m²) y Registro (302,60m²). Sugiere ampliación ilegal parcial.</li>
@@ -261,7 +261,7 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>2. Incumplimiento contractual — base del art. 1124 CC</h4>
 <div class="card">
-  <ul style="font-size:11px;color:var(--text2);padding-left:16px;">
+  <ul style="font-size:13px;color:var(--text2);padding-left:16px;">
     <li style="margin-bottom:3px"><strong>Declaración falsa:</strong> "libre de cargas y gravámenes" con cargas de ~220.000€. <strong>Incumplimiento de estipulación expresa.</strong></li>
     <li style="margin-bottom:3px"><strong>Aliud pro alio:</strong> contrataste vivienda legalizada, recibes solar urbanizable con 3 edificios ilegales. STS 23/05/2006.</li>
     <li style="margin-bottom:3px"><strong>Matiz crítico (nuevo — del urbanístico):</strong> Las edificaciones sin licencia no son "cargas urbanísticas" sino <strong>infracciones urbanísticas</strong>. La jurisprudencia que dice que "libre de cargas" no incluye cargas urbanísticas (SAP Barcelona, SAP Madrid) habla de CARGAS, no de INFRACCIONES. Este matiz salva el argumento del incumplimiento contractual.</li>
@@ -271,7 +271,7 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>3. Conocimiento previo de la inmobiliaria</h4>
 <div class="card">
-  <ul style="font-size:11px;color:var(--text2);padding-left:16px;">
+  <ul style="font-size:13px;color:var(--text2);padding-left:16px;">
     <li style="margin-bottom:3px">Laura Aybar: <strong>"Este es el correo que envié en su día"</strong> — RE/MAX ya había sido informada. <span style="color:var(--warning)">Pero desconocemos fecha exacta del correo original.</span></li>
     <li style="margin-bottom:3px">Laura: <strong>"el certificado que me han pedido"</strong> — RE/MAX le solicitó certificado urbanístico.</li>
     <li style="margin-bottom:3px">Silvia, 7 oct: <strong>"1ª vez en 4 años que me piden cédula urbanística"</strong> — confiesa incumplimiento sistemático.</li>
@@ -280,7 +280,7 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>4. Control de la financiación</h4>
 <div class="card">
-  <ul style="font-size:11px;color:var(--text2);padding-left:16px;">
+  <ul style="font-size:13px;color:var(--text2);padding-left:16px;">
     <li style="margin-bottom:3px">Tasación Caja Rural <strong>solicitada directamente por RE/MAX</strong> (email Rocío Sánchez).</li>
     <li style="margin-bottom:3px">Silvia: tasador <strong>"iba a hacer todo lo posible para que saliera cuanto más mejor"</strong>.</li>
     <li style="margin-bottom:3px"><span style="color:var(--warning)">⚠️ La defensa reinterpretará esto:</span> "iba a hacer todo lo posible" puede significar simplemente que el tasador intentaba obtener la valoración más alta dentro de parámetros legales, práctica habitual en el sector. No prueba connivencia.</li>
@@ -290,7 +290,7 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>5. Venta a terceros — doble enriquecimiento</h4>
 <div class="card">
-  <ul style="font-size:11px;color:var(--text2);padding-left:16px;">
+  <ul style="font-size:13px;color:var(--text2);padding-left:16px;">
     <li style="margin-bottom:3px">Nota simple 30/04/2026: finca 90666 → <strong>Francisco Fernández y Vanesa Sánchez</strong>.</li>
     <li style="margin-bottom:3px">Hipoteca BBVA 249.500€. Valor real muy inferior a 360.000€ pactados.</li>
     <li style="margin-bottom:3px"><strong>Vendedores cobraron 36.000€ de arras Y vendieron la casa.</strong></li>
@@ -331,8 +331,8 @@ table.full tr:hover td { background:var(--surface2); }
 
 <h4>El problema con la estrategia original (solo art. 1124 CC)</h4>
 <div class="card">
-  <p style="font-size:11px;color:var(--text2)">Reclamar solo el doble de arras por art. 1124 CC tiene <strong>tres debilidades</strong> que no habíamos anticipado:</p>
-  <ol style="font-size:11px;color:var(--text2);padding-left:14px;margin-top:4px;">
+  <p style="font-size:13px;color:var(--text2)">Reclamar solo el doble de arras por art. 1124 CC tiene <strong>tres debilidades</strong> que no habíamos anticipado:</p>
+  <ol style="font-size:13px;color:var(--text2);padding-left:14px;margin-top:4px;">
     <li style="margin-bottom:2px"><strong>Las arras requieren pacto expreso para funcionar como cláusula penal.</strong> STS 12/07/2017, STS 22/12/2015 y —críticamente— <strong>SAP Oviedo 11/09/2018</strong>: "Cuando el contrato de arras no especifica el carácter penal de las mismas, debe estarse a su función penitencial." Si el juez asturiano aplica este criterio, denegará el duplo.</li>
     <li style="margin-bottom:2px"><strong>La cláusula "libre de cargas" probablemente no incluye cargas urbanísticas.</strong> SAP Barcelona 19/11/2018, SAP Madrid 03/06/2019. <span style="color:var(--accent2)">Pero el urbanístico ha identificado un matiz salvador: las edificaciones sin licencia no son "cargas", son INFRACCIONES urbanísticas.</span></li>
     <li style="margin-bottom:2px"><strong>No sabemos la fecha exacta en que RE/MAX conoció los vicios.</strong> Si fue después del 18/08/2025, no hay dolo en la formación del contrato.</li>
@@ -449,47 +449,47 @@ table.full tr:hover td { background:var(--surface2); }
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL1</span> <strong>Nulidad contractual por publicidad engañosa como pretensión principal</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Colisión Perito-Civilista-Urbanístico. Al cruzar la Directiva 2005/29/CE (prácticas engañosas) con el art. 1265 CC (vicio del consentimiento), surge una pretensión MÁS POTENTE que el art. 1124: la nulidad contractual con indemnización de daños. La publicidad en terrenos.es diciendo "Urbano" cuando es "Urbanizable" es una práctica engañosa documentada. Esto permite reclamar la restitución de los 36.000€ MÁS daños y perjuicios, potencialmente superando los 72.000€, sin depender de si las arras son "penales" o no.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Colisión Perito-Civilista-Urbanístico. Al cruzar la Directiva 2005/29/CE (prácticas engañosas) con el art. 1265 CC (vicio del consentimiento), surge una pretensión MÁS POTENTE que el art. 1124: la nulidad contractual con indemnización de daños. La publicidad en terrenos.es diciendo "Urbano" cuando es "Urbanizable" es una práctica engañosa documentada. Esto permite reclamar la restitución de los 36.000€ MÁS daños y perjuicios, potencialmente superando los 72.000€, sin depender de si las arras son "penales" o no.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL2</span> <strong>Estructura de pretensiones en cascada</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Civilista + Perito. En lugar de apostar todo al art. 1124 CC, se articulan 4 pretensiones en orden descendente: nulidad → resolución con duplo → anulabilidad → resolución simple. El juez elige la que considere probada. Es imposible perder completamente si los hechos están acreditados.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Civilista + Perito. En lugar de apostar todo al art. 1124 CC, se articulan 4 pretensiones en orden descendente: nulidad → resolución con duplo → anulabilidad → resolución simple. El juez elige la que considere probada. Es imposible perder completamente si los hechos están acreditados.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL3</span> <strong>Distinción "carga urbanística" vs "infracción urbanística"</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Urbanístico corrigiendo al Civilista. La jurisprudencia de Barcelona y Madrid dice que "libre de cargas" no incluye cargas urbanísticas. Pero las edificaciones sin licencia NO son "cargas": son INFRACCIONES urbanísticas. Este matiz técnico salva el argumento del incumplimiento contractual y neutraliza una de las defensas más peligrosas de la otra parte.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Urbanístico corrigiendo al Civilista. La jurisprudencia de Barcelona y Madrid dice que "libre de cargas" no incluye cargas urbanísticas. Pero las edificaciones sin licencia NO son "cargas": son INFRACCIONES urbanísticas. Este matiz técnico salva el argumento del incumplimiento contractual y neutraliza una de las defensas más peligrosas de la otra parte.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL4</span> <strong>Francisco Fernández (nuevo comprador) como testigo de oro</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Urbanístico → Civilista. El comprador de abril 2026 es una pieza que nadie había considerado. Dos escenarios, ambos favorables: (a) si a él tampoco le informaron → patrón de conducta dolosa de RE/MAX, (b) si a él SÍ le informaron → discriminación dolosa (a unos sí, a otros no). En ambos casos, su testimonio es dinamita. Hay que localizarlo y entrevistarlo reservadamente.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Urbanístico → Civilista. El comprador de abril 2026 es una pieza que nadie había considerado. Dos escenarios, ambos favorables: (a) si a él tampoco le informaron → patrón de conducta dolosa de RE/MAX, (b) si a él SÍ le informaron → discriminación dolosa (a unos sí, a otros no). En ambos casos, su testimonio es dinamita. Hay que localizarlo y entrevistarlo reservadamente.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL5</span> <strong>La hipoteca BBVA como arma ofensiva</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Colisión de los tres. No esperar a que la defensa use los 249.500€ de BBVA para decir "la finca sí era hipotecable". Adelantarse: pedir la tasación de BBVA, denunciar al Banco de España por posible préstamo sin verificar legalidad urbanística, y usar la hipoteca como prueba del valor real de mercado (muy inferior a los 360.000€ pactados).</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Colisión de los tres. No esperar a que la defensa use los 249.500€ de BBVA para decir "la finca sí era hipotecable". Adelantarse: pedir la tasación de BBVA, denunciar al Banco de España por posible préstamo sin verificar legalidad urbanística, y usar la hipoteca como prueba del valor real de mercado (muy inferior a los 360.000€ pactados).</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL6</span> <strong>Denuncia al Banco de España</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Urbanístico. Caja Rural por tasación potencialmente complaciente ("iba a hacer todo lo posible") y BBVA por préstamo sin verificar la legalidad urbanística. Posible infracción de la Circular 3/2014 del BdE y de la Ley 5/2019 de contratos inmobiliarios. Es gratuita, genera expediente administrativo, y añade presión institucional.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Urbanístico. Caja Rural por tasación potencialmente complaciente ("iba a hacer todo lo posible") y BBVA por préstamo sin verificar la legalidad urbanística. Posible infracción de la Circular 3/2014 del BdE y de la Ley 5/2019 de contratos inmobiliarios. Es gratuita, genera expediente administrativo, y añade presión institucional.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL7</span> <strong>Directiva 2011/83/UE como fundamento autónomo</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Urbanístico. Esta directiva impone deberes de información precontractual a los "empresarios" frente a "consumidores". RE/MAX es empresario. Vosotros sois consumidores. La omisión de la clasificación urbanística y las edificaciones ilegales infringe el art. 6.1 de la Directiva. Tiene efecto directo vertical y refuerza tanto la nulidad como la anulabilidad.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Urbanístico. Esta directiva impone deberes de información precontractual a los "empresarios" frente a "consumidores". RE/MAX es empresario. Vosotros sois consumidores. La omisión de la clasificación urbanística y las edificaciones ilegales infringe el art. 6.1 de la Directiva. Tiene efecto directo vertical y refuerza tanto la nulidad como la anulabilidad.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL8</span> <strong>Denuncia urbanística como herramienta probatoria</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Perito resolviendo el choque Civilista-Urbanístico. La denuncia urbanística ante el Ayuntamiento NO es un contencioso (no contamina el proceso civil) pero genera un expediente administrativo que luego se puede usar como prueba documental en el juicio civil. Es el punto dulce entre las dos estrategias enfrentadas. Si el Ayuntamiento no responde en 3 meses → silencio administrativo negativo → vía contenciosa sigue abierta.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Perito resolviendo el choque Civilista-Urbanístico. La denuncia urbanística ante el Ayuntamiento NO es un contencioso (no contamina el proceso civil) pero genera un expediente administrativo que luego se puede usar como prueba documental en el juicio civil. Es el punto dulce entre las dos estrategias enfrentadas. Si el Ayuntamiento no responde en 3 meses → silencio administrativo negativo → vía contenciosa sigue abierta.</p>
 </div>
 
 <div class="card hl-accent">
   <div class="card-header"><span class="badge bb">NL9</span> <strong>Laura Aybar como eslabón crítico</strong></div>
-  <p style="font-size:11px;color:var(--text2)"><strong>Origen:</strong> Perito, amplificado en colisión. Su email es el agujero negro del caso. Necesitamos saber: (a) fecha exacta del correo original, (b) destinatario concreto, (c) contenido textual, (d) si hubo respuesta. Además, su cargo en RE/MAX (¿franquiciada o empleada?) determina si la matriz responde solidariamente. Su testimonio debe fijarse mediante diligencias preliminares YA.</p>
+  <p style="font-size:13px;color:var(--text2)"><strong>Origen:</strong> Perito, amplificado en colisión. Su email es el agujero negro del caso. Necesitamos saber: (a) fecha exacta del correo original, (b) destinatario concreto, (c) contenido textual, (d) si hubo respuesta. Además, su cargo en RE/MAX (¿franquiciada o empleada?) determina si la matriz responde solidariamente. Su testimonio debe fijarse mediante diligencias preliminares YA.</p>
 </div>
 </section>
 
@@ -683,13 +683,13 @@ table.full tr:hover td { background:var(--surface2); }
 <table class="full">
 <thead><tr><th>Riesgo</th><th>Prob.</th><th>Consecuencia</th><th>Mitigación</th></tr></thead>
 <tbody>
-<tr><td><strong>Juez aplica doctrina asturiana: no duplo sin pacto expreso</strong><br><span style="font-size:9px;color:var(--text2)">SAP Oviedo 2018 + SAP Gijón 2020</span></td><td style="color:var(--warning)">35%</td><td>36.000€ en vez de 72.000€</td><td style="font-size:10px">✅ Pretensión principal de nulidad no depende de pacto de arras. La subsidiaria 1ª (duplo) es solo un intento adicional.</td></tr>
-<tr><td><strong>Juez recalifica como anulabilidad</strong></td><td style="color:var(--warning)">25%</td><td>36.000€ + daños parciales</td><td style="font-size:10px">✅ Subsidiarias 2ª y 3ª cubren este escenario.</td></tr>
-<tr><td><strong>Hipoteca BBVA beneficia a la defensa</strong></td><td style="color:var(--warning)">30%</td><td>Debilita tesis de "finica no hipotecable"</td><td style="font-size:10px">✅ NL5: usar la hipoteca ofensivamente. Pedir tasación BBVA. Denunciar al BdE.</td></tr>
-<tr><td><strong>Audios de WhatsApp inadmitidos</strong></td><td style="color:var(--warning)">25%</td><td>Pérdida de prueba de evasión/presión</td><td style="font-size:10px">✅ Pericial informática. No construir el caso sobre los audios.</td></tr>
-<tr><td><strong>Culpa concurrente del comprador</strong></td><td style="color:var(--accent)">20%</td><td>Reducción proporcional (15-30%)</td><td style="font-size:10px">✅ SAP Asturias 7/10/2020: la doctrina cede ante "puesta en escena de legalidad."</td></tr>
-<tr><td><strong>Insolvencia de vendedores</strong></td><td style="color:var(--warning)">35%</td><td>Condena inejecutable</td><td style="font-size:10px">✅ Embargo preventivo + solidaridad RE/MAX España.</td></tr>
-<tr><td><strong>Juez aplica art. 1454 CC (comprador "desistió")</strong></td><td style="color:var(--accent)">8%</td><td style="color:var(--danger)">PIERDEN LAS ARRAS</td><td style="font-size:10px">✅ STS 30/10/2013: no cabe 1454 con incumplimiento del vendedor. Venta a terceros = incumplimiento definitivo.</td></tr>
+<tr><td><strong>Juez aplica doctrina asturiana: no duplo sin pacto expreso</strong><br><span style="font-size:11px;color:var(--text2)">SAP Oviedo 2018 + SAP Gijón 2020</span></td><td style="color:var(--warning)">35%</td><td>36.000€ en vez de 72.000€</td><td style="font-size:11px">✅ Pretensión principal de nulidad no depende de pacto de arras. La subsidiaria 1ª (duplo) es solo un intento adicional.</td></tr>
+<tr><td><strong>Juez recalifica como anulabilidad</strong></td><td style="color:var(--warning)">25%</td><td>36.000€ + daños parciales</td><td style="font-size:11px">✅ Subsidiarias 2ª y 3ª cubren este escenario.</td></tr>
+<tr><td><strong>Hipoteca BBVA beneficia a la defensa</strong></td><td style="color:var(--warning)">30%</td><td>Debilita tesis de "finica no hipotecable"</td><td style="font-size:11px">✅ NL5: usar la hipoteca ofensivamente. Pedir tasación BBVA. Denunciar al BdE.</td></tr>
+<tr><td><strong>Audios de WhatsApp inadmitidos</strong></td><td style="color:var(--warning)">25%</td><td>Pérdida de prueba de evasión/presión</td><td style="font-size:11px">✅ Pericial informática. No construir el caso sobre los audios.</td></tr>
+<tr><td><strong>Culpa concurrente del comprador</strong></td><td style="color:var(--accent)">20%</td><td>Reducción proporcional (15-30%)</td><td style="font-size:11px">✅ SAP Asturias 7/10/2020: la doctrina cede ante "puesta en escena de legalidad."</td></tr>
+<tr><td><strong>Insolvencia de vendedores</strong></td><td style="color:var(--warning)">35%</td><td>Condena inejecutable</td><td style="font-size:11px">✅ Embargo preventivo + solidaridad RE/MAX España.</td></tr>
+<tr><td><strong>Juez aplica art. 1454 CC (comprador "desistió")</strong></td><td style="color:var(--accent)">8%</td><td style="color:var(--danger)">PIERDEN LAS ARRAS</td><td style="font-size:11px">✅ STS 30/10/2013: no cabe 1454 con incumplimiento del vendedor. Venta a terceros = incumplimiento definitivo.</td></tr>
 </tbody></table>
 </div>
 
@@ -771,14 +771,14 @@ table.full tr:hover td { background:var(--surface2); }
 
 <div class="card highlight" style="margin-top:16px;">
   <div class="card-header"><span class="badge br">🔑 PRIORIDAD ABSOLUTA</span></div>
-  <p style="font-size:12px;"><strong>El correo original de Laura Aybar.</strong> De su fecha depende si hay dolo (antes del 18/08/2025) o solo negligencia (después). De su contenido depende si la información fue clara o ambigua. De su destinatario depende a quién imputar el conocimiento. <strong>Sin este correo, el caso se sostiene pero cojea. Con él, es demoledor.</strong></p>
-  <p style="font-size:11px;color:var(--accent2);margin-top:6px">Munia debe solicitar diligencias preliminares al Juzgado de Siero (art. 256 LEC) para que el Ayuntamiento certifique y aporte todas las comunicaciones entre Laura Aybar y RE/MAX, con fechas y metadatos.</p>
+  <p style="font-size:13px;"><strong>El correo original de Laura Aybar.</strong> De su fecha depende si hay dolo (antes del 18/08/2025) o solo negligencia (después). De su contenido depende si la información fue clara o ambigua. De su destinatario depende a quién imputar el conocimiento. <strong>Sin este correo, el caso se sostiene pero cojea. Con él, es demoledor.</strong></p>
+  <p style="font-size:13px;color:var(--accent2);margin-top:6px">Munia debe solicitar diligencias preliminares al Juzgado de Siero (art. 256 LEC) para que el Ayuntamiento certifique y aporte todas las comunicaciones entre Laura Aybar y RE/MAX, con fechas y metadatos.</p>
 </div>
 
 <div class="card highlight">
   <div class="card-header"><span class="badge br">⚠️ URGENCIA</span> Revisar la redacción exacta del contrato de arras</div>
-  <p style="font-size:12px;">Si el contrato dice <strong>"en concepto de arras o señal"</strong> sin especificar "arras penales" → tres sentencias asturianas (SAP Oviedo 2018, SAP Gijón 2020, SAP Asturias 2018) dicen que NO hay duplo. Si dice <strong>"arras penales"</strong> o <strong>"en caso de incumplimiento del vendedor, devolverá el duplo"</strong> → el art. 1124 CC es viable.</p>
-  <p style="font-size:11px;color:var(--accent2);margin-top:6px">Si la redacción no es favorable, la estrategia se inclina aún más hacia la pretensión principal de NULIDAD, que no depende de la naturaleza de las arras.</p>
+  <p style="font-size:13px;">Si el contrato dice <strong>"en concepto de arras o señal"</strong> sin especificar "arras penales" → tres sentencias asturianas (SAP Oviedo 2018, SAP Gijón 2020, SAP Asturias 2018) dicen que NO hay duplo. Si dice <strong>"arras penales"</strong> o <strong>"en caso de incumplimiento del vendedor, devolverá el duplo"</strong> → el art. 1124 CC es viable.</p>
+  <p style="font-size:13px;color:var(--accent2);margin-top:6px">Si la redacción no es favorable, la estrategia se inclina aún más hacia la pretensión principal de NULIDAD, que no depende de la naturaleza de las arras.</p>
 </div>
 </section>
 
