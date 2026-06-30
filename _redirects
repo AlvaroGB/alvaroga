@@ -1,4 +1,5 @@
 /casa/* / 301
+/automations/* /automations/:splat 200
 /* /index.html 200
 /polymarket-dashboard / 301
 /polymarket-data.json / 301
