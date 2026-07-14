@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Álvaro · AI Automation Engineer</title>
+<style>
+  :root {
+    --bg: #050510;
+    --surface: #0c0c1d;
+    --card: #111128;
+    --border: #1e1e3a;
+    --purple: #a78bfa;
+    --cyan: #22d3ee;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --pink: #f472b6;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+  a { color: var(--cyan); }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    margin-bottom: 52px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 30%, #22d3ee 70%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .tagline {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    color: var(--cyan);
+  }
+
+  /* ── SECTION HEADINGS ── */
+  h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--purple);
+    margin: 48px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ENTERPRISE CARDS ── */
+  .enterprise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .ecard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ecard::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+  }
+  .ecard.purple::after { background: linear-gradient(90deg, var(--purple), var(--pink)); }
+  .ecard.cyan::after   { background: linear-gradient(90deg, var(--cyan), var(--green)); }
+  .ecard h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .ecard .role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+  .ecard p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    line-height: 1.55;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
+  .pill.purple { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .pill.cyan   { background: rgba(34,211,238,0.1);  color: var(--cyan); }
+  .pill.green  { background: rgba(52,211,153,0.1);  color: var(--green); }
+  .pill.amber  { background: rgba(251,191,36,0.1);  color: var(--amber); }
+
+  /* ── COMMUNITY BLOCK ── */
+  .community-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .cblock {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .cblock h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cblock li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+    list-style: none;
+  }
+  .cblock li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+  }
+
+  /* ── PERSONAL STACK ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .scard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    transition: border-color 0.2s;
+  }
+  .scard:hover { border-color: var(--purple); }
+  .scard h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .scard .hook {
+    font-size: 0.78rem;
+    color: var(--cyan);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+  .scard p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TALK BLOCK ── */
+  .talk-block {
+    background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(34,211,238,0.04));
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 14px;
+    padding: 32px;
+    margin-top: 16px;
+  }
+  .talk-block h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .talk-block .context {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .talk-flow {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .flow-step {
+    flex: 1;
+    min-width: 110px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .flow-step .icon {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  .flow-step .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--purple);
+  }
+  .flow-step .detail {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .quote {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--muted);
+    border-left: 3px solid var(--purple);
+    padding-left: 18px;
+    margin-top: 16px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  footer strong { color: var(--cyan); }
+
+  @media (max-width: 720px) {
+    .enterprise-grid, .community-block, .stack-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.2rem; }
+  }
+  @media print {
+    body { background: #fff; color: #1a1a2e; font-size: 13px; max-width: 100%; padding: 28px; }
+    .card, .ecard, .scard, .cblock { background: #f8f9fc; border-color: #ddd; }
+    h1 { -webkit-text-fill-color: #7c3aed; }
+    h2 { color: #7c3aed; }
+    .muted, p, .detail, .context { color: #444; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Álvaro</h1>
+  <p class="subtitle">AI Automation Engineer — I turn manual, repetitive knowledge work into autonomous systems that run while I sleep.</p>
+  <div class="tagline">Madrid · Remote · 12+ automations in production</div>
+</header>
+
+<!-- ═══════════ CONDENSED CV ═══════════ -->
+<h2>At a Glance</h2>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px; margin-bottom:28px">
+
+  <div class="cblock" style="padding:20px 22px">
+    <h3 style="margin-bottom:10px">💼 Experience</h3>
+    <div style="font-size:0.88rem; color:var(--muted); line-height:1.6">
+      <div style="margin-bottom:10px">
+        <strong style="color:var(--text)">Senior Role · Current</strong><br>
+        <span style="font-size:0.78rem">4 years · Remote · 56K</span><br>
+        <span style="font-size:0.78rem">Built Performance Compass, PRIntel, Prompt Exchange, Hall of Impact</span>
+      </div>
+      <div>
+        <strong style="color:var(--text)">Previous Roles</strong><br>
+        <span style="font-size:0.78rem">Data-heavy, process-heavy environments — learned what to automate</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cblock" style="padding:20px 22px">
+    <h3 style="margin-bottom:10px">🧠 Stack</h3>
+    <div class="pill-row">
+      <span class="pill purple">React · TypeScript</span>
+      <span class="pill cyan">Python</span>
+      <span class="pill green">Node.js</span>
+      <span class="pill purple">Firebase</span>
+      <span class="pill cyan">PostgreSQL</span>
+      <span class="pill green">Vercel · CF Pages</span>
+      <span class="pill purple">Entra ID · OAuth</span>
+      <span class="pill cyan">LLMs · RAG</span>
+      <span class="pill green">MCP protocol</span>
+      <span class="pill amber">Agent orchestration</span>
+      <span class="pill purple">Web Speech API</span>
+      <span class="pill cyan">Whisper · TTS</span>
+      <span class="pill green">Git · CI/CD</span>
+    </div>
+  </div>
+
+  <div class="cblock" style="padding:20px 22px">
+    <h3 style="margin-bottom:10px">🌍 Languages</h3>
+    <div style="font-size:0.9rem; color:var(--muted); line-height:1.8">
+      <div><strong style="color:var(--text)">Spanish</strong> · Native</div>
+      <div><strong style="color:var(--text)">English</strong> · Fluent (C1/C2)</div>
+      <div><strong style="color:var(--text)">Chinese</strong> · Learning (HSK 2–3)</div>
+    </div>
+    <h3 style="margin-top:16px; margin-bottom:8px">📍 Location</h3>
+    <div style="font-size:0.85rem; color:var(--muted)">
+      Madrid, Spain · GMT+1<br>
+      Remote-first · Async-native
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ ENTERPRISE ═══════════ -->
+<h2>Enterprise Tools I've Shipped</h2>
+
+<div class="enterprise-grid">
+  <div class="ecard purple">
+    <h3>Performance Compass</h3>
+    <div class="role">Performance Management Platform</div>
+    <p>
+      Full-cycle HR performance suite with role-based access for HR, managers, and employees.
+      Real-time scoreboards with weighted KPIs, PIP case management with deadline tracking and
+      document generation, 360° reviews with calibration workflows, self-assessments, and automated
+      distribution analysis across under/performer/over tiers with 9-box grid visualization.
+    </p>
+    <div class="pill-row">
+      <span class="pill purple">Entra ID + OAuth 2.0</span>
+      <span class="pill purple">MSAL SSO</span>
+      <span class="pill cyan">React + TypeScript</span>
+      <span class="pill cyan">Azure SQL</span>
+      <span class="pill green">RBAC 3-tier</span>
+      <span class="pill amber">PDF gen</span>
+    </div>
+  </div>
+
+  <div class="ecard cyan">
+    <h3>PRIntel</h3>
+    <div class="role">Journalist Relationship Manager</div>
+    <p>
+      Built with Cursor AI to let a 3-person team efficiently manage thousands of journalist contacts.
+      Bulk email campaigns via Mailgun, metadata enrichment from public APIs, engagement tracking
+      (opens, clicks, replies), smart filtering by beat/region/outlet, and CSV import/export for
+      non-technical users. Replaced a labyrinth of spreadsheets and forwarded emails.
+    </p>
+    <div class="pill-row">
+      <span class="pill purple">Cursor AI-assisted</span>
+      <span class="pill cyan">PostgreSQL + FTS</span>
+      <span class="pill cyan">Mailgun API</span>
+      <span class="pill green">Bulk ops</span>
+      <span class="pill amber">CSV import</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PERSONAL PRODUCT ═══════════ -->
+<h2>Personal Product — Built With AI, Used By Real People</h2>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:20px">
+<div class="ecard cyan" style="grid-column: 1 / -1;">
+  <h3>Hanzi Samurai</h3>
+  <div class="role">Chinese Character Learning Game · <a href="https://hanzi-game-8yvzcnspn-alvaromieres-5993s-projects.vercel.app" style="color:var(--cyan)">hanzi-game.vercel.app</a></div>
+  <p>
+    A full game, not a flashcard app. Characters fall from the top of the screen — you type their pinyin
+    before they crash. Three modes (Recognition, Recall, Listening), combo multipliers, streak milestones,
+    and wave-based progression mapped to HSK levels 1–3. Spaced repetition engine (SM-2) under the hood
+    weights which characters appear based on your mastery. Confusables engine surfaces look-alike hanzi
+    you actually mix up. Custom audio pipeline via Web Speech API (zh-CN). Lifecycle funnel guides users
+    from first character to daily habit. Built iteratively with Cursor and autonomous agent swarms.
+  </p>
+  <div class="pill-row">
+    <span class="pill purple">React + Vite</span>
+    <span class="pill purple">Firebase Auth</span>
+    <span class="pill cyan">SRS engine (SM-2)</span>
+    <span class="pill cyan">Web Speech API</span>
+    <span class="pill green">2,659 words</span>
+    <span class="pill green">31K sentences</span>
+    <span class="pill amber">Cursor AI</span>
+    <span class="pill amber">Agent swarms</span>
+    <span class="pill purple">Vercel</span>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════ COMMUNITY ═══════════ -->
+<h2>Community & Culture</h2>
+
+<div class="community-block">
+  <div class="cblock">
+    <h3>🌐 Prompt Exchange</h3>
+    <ul>
+      <li>Internal community where employees share real AI wins, prompts, and honest failures</li>
+      <li>Biweekly curated newsletter: AI developments that actually change how office workers work — zero hype, practical takeaways with ready-to-use prompts</li>
+      <li>Built the culture: demos over decks, results over speculation</li>
+    </ul>
+  </div>
+
+  <div class="cblock">
+    <h3>🏆 Hall of Impact</h3>
+    <ul>
+      <li>Repository of applied automations with quantified hours saved per entry — every contribution tracked</li>
+      <li>Monthly peer voting to surface the most impactful automation — recognition drives adoption</li>
+      <li>Flywheel effect: visible impact → more people automate → more impact → stronger culture</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════ PERSONAL STACK ═══════════ -->
+<h2>Personal Automation Stack — Running Daily, Zero Human Touch</h2>
+
+<div class="stack-grid">
+  <div class="scard">
+    <h3>El Despacho</h3>
+    <div class="hook">Daily AI Briefing</div>
+    <p>Curated RSS → LLM summarization → Spanish briefing delivered every morning via cron. No human curation. Filters noise, groups by topic, highlights what matters.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill green">Cron</span>
+      <span class="pill cyan">RSS</span>
+      <span class="pill purple">LLM chain</span>
+    </div>
+  </div>
+  <div class="scard">
+    <h3>Teams → Summary</h3>
+    <div class="hook">Meeting Intelligence</div>
+    <p>Watches for new Teams recordings → transcribes → extracts action items, decisions, and owners → routes summaries to the right people. Never wonder "what did we agree on?" again.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill cyan">Whisper</span>
+      <span class="pill purple">LLM extraction</span>
+      <span class="pill green">Webhook</span>
+    </div>
+  </div>
+  <div class="scard">
+    <h3>Voice → Notes</h3>
+    <div class="hook">Capture Everything</div>
+    <p>Dictate ideas while walking or driving. Speech transcribed, structured, linked, and filed into Obsidian vault. Capture rate went from ~20% to near 100%.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill cyan">Whisper</span>
+      <span class="pill purple">Obsidian API</span>
+      <span class="pill green">Auto-link</span>
+    </div>
+  </div>
+  <div class="scard">
+    <h3>Portfolio Agents</h3>
+    <div class="hook">Financial Autopilot</div>
+    <p>Multi-asset portfolio tracker. Polymarket copier mirrors top traders (paper). Coinbase CDP SDK for on-chain ops. Financial awareness without screen addiction.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill amber">Polymarket API</span>
+      <span class="pill cyan">Coinbase CDP</span>
+      <span class="pill purple">MCP protocol</span>
+    </div>
+  </div>
+  <div class="scard">
+    <h3>EOD Check-in</h3>
+    <div class="hook">Daily Reflection</div>
+    <p>Simple web form → structured Obsidian entry. Low friction, high consistency. Built the daily reflection habit that a dozen apps failed to create.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill green">Web form</span>
+      <span class="pill purple">Obsidian</span>
+      <span class="pill cyan">Webhook</span>
+    </div>
+  </div>
+  <div class="scard">
+    <h3>Signal from Noise</h3>
+    <div class="hook">Industry Monitoring</div>
+    <p>Watches key blogs and technical sources. Diffs content, detects meaningful changes — not every post. Delivered only when something actually changed.</p>
+    <div class="pill-row" style="margin-top:10px">
+      <span class="pill cyan">RSS diff</span>
+      <span class="pill green">Change detection</span>
+      <span class="pill purple">LLM triage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TALKS ═══════════ -->
+<h2>Talks That Land</h2>
+
+<div class="talk-block">
+  <h3>"How I Used AI to Strengthen a Legal Case"</h3>
+  <div class="context">Internal tech talk · Real case, real tools, real outcome</div>
+
+  <div class="talk-flow">
+    <div class="flow-step">
+      <div class="icon">📄</div>
+      <div class="label">Ingest</div>
+      <div class="detail">300+ pages of contracts, emails, and bank PDFs</div>
+    </div>
+    <div class="flow-step">
+      <div class="icon">🔍</div>
+      <div class="label">Parse</div>
+      <div class="detail">Claude Code extracts key clauses, dates, inconsistencies</div>
+    </div>
+    <div class="flow-step">
+      <div class="icon">🔗</div>
+      <div class="label">Cross-ref</div>
+      <div class="detail">NotebookLM links evidence across documents</div>
+    </div>
+    <div class="flow-step">
+      <div class="icon">📊</div>
+      <div class="label">Deliver</div>
+      <div class="detail">Chronological evidence map + strategy brief for the lawyer</div>
+    </div>
+  </div>
+
+  <div class="quote">
+    "The moment I showed a chronological evidence map built from raw PDFs in under an hour —
+    clauses that contradicted each other, timeline gaps the other side couldn't explain —
+    the room went quiet. Non-technical colleagues understood instantly: this isn't about code.
+    It's a force multiplier for any knowledge-intensive fight."
+  </div>
+</div>
+
+<footer>
+  Madrid · Remote · <strong>Building systems that run while I sleep.</strong>
+</footer>
+
+</body>
+</html>
