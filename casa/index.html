@@ -786,7 +786,7 @@ table.full tr:hover td { background:var(--surface2); }
 </div>
 
 <script>
-const EXPECTED = '5a5021fa47fb5dbd99adf0d319b7d98a8fae7792acda47173d5adc2e344730a5';
+const EXPECTED = 'b9ee6f36aee5af67e76c690a07b198db70343447a7c8075d500b7a1fcc845e65';
 async function sha256(t){const d=new TextEncoder().encode(t);const h=await crypto.subtle.digest('SHA-256',d);const a=Array.from(new Uint8Array(h));return a.map(b=>b.toString(16).padStart(2,'0')).join('');}
 async function verify(){const i=document.getElementById('pw').value;const e=document.getElementById('error');if(!i){e.textContent='Introduce la contraseña.';return;}const h=await sha256(i);if(h===EXPECTED){document.getElementById('login-screen').remove();document.getElementById('app-screen').style.display='flex';}else{e.textContent='Contraseña incorrecta.';document.getElementById('pw').value='';document.getElementById('pw').focus();}}
 
